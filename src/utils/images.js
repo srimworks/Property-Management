@@ -1,5 +1,6 @@
-import MAIN_LOGO from '../images/common/logomark.svg'
 
-export const IMAGES={
-MAIN_LOGO,
-}
+
+export const IMAGES = {
+  MAIN_LOGO:new URL('../images/common/logomark.svg',import.meta.url).href,
+
+};
