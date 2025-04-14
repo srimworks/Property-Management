@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import NavBar from './reusable/NavBar';
+import Home from './components/Home';
 
 const AppRouter = () => {
   return (
@@ -18,8 +19,8 @@ export const Routes = createBrowserRouter([
     path: "/",
     children: [
       {
-        element: "",
-        path: "",
+        element: <Home/>,
+        path: "/",
       },
    ]}   
 ])
