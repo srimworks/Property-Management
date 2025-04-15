@@ -16,4 +16,5 @@ export const IMAGES = {
   HOW_IT_WORKS_2:new URL('../images/home/how it works/howIcon-2.svg',import.meta.url).href,
   HOW_IT_WORKS_3:new URL('../images/home/how it works/howIcon-3.svg',import.meta.url).href,
   HOW_IT_WORKS_4:new URL('../images/home/how it works/howIcon-4.svg',import.meta.url).href,
+  HOME_HERO:new URL('../images/home/HeroSection Image.png',import.meta.url).href,
 };
