@@ -33,4 +33,10 @@ export const IMAGES = {
 
 
   SEARCHRESULTS_IMAGE:new URL('../images/common/SearchResultsImage.png',import.meta.url).href,
+
+  LOGOUT_ICON:new URL('../images/common/logoutIcon.svg',import.meta.url).href,
+  MY_TRANSACTION_ICON:new URL('../images/common/myTransactions.svg',import.meta.url).href,
+  EDIT_ICON:new URL('../images/common/editIcon.svg',import.meta.url).href,
+  CHEVRON_RIGHT:new URL('../images/common/chevronRight.svg',import.meta.url).href,
+  AVATAR_ICON:new URL('../images/common/tenant-avatar.png',import.meta.url).href,
 };
