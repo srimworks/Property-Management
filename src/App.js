@@ -39,6 +39,10 @@ export const Routes = createBrowserRouter([
         element: <Home/>,
         path: "/",
       },
+      {
+        element: <Results/>,
+        path: "/search-results",
+      },
    ]} ,
 
    {
