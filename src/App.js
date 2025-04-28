@@ -4,6 +4,7 @@ import NavBar from './reusable/NavBar';
 import Home from './components/Home';
 import ProfileDashboardNav from './reusable/ProfileDashboardNav';
 import ProfileDashboard from './components/ProfileDashboard';
+import Results from './components/Results';
 
 
 const AppRouter = () => {
