@@ -1,15 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const BottomContent = ({title,content,btnText}) => {
+const BottomContent = ({ title, content, btnText }) => {
   return (
-    <div className='desc-main-block'>
-    <h1 className='desc-heading'>{title}</h1>
-    <p className='desc-content'>{content}</p>
+    <div className="desc-main-block">
+      <div className="desc-content">
+      <h1 className="desc-heading">{title}</h1>
+      <p className="desc-body">{content}</p>
+      </div>
 
-    {btnText.length>0 && <button className='desc-button'>{btnText}</button>}
- 
-</div>
-  )
-}
+      {btnText.length > 0 && <button className="primary-btn">{btnText}</button>}
+    </div>
+  );
+};
 
-export default BottomContent
+export default BottomContent;

@@ -13,12 +13,10 @@ import HomeHero from "../reusable/HomeHero";
 
 const Home = () => {
   return (
-    <div className="outlet-render">
+    <div className="outlet-render-home">
       <HomeHero/>
       <WhyChooseCards {...WHY_CHOOSE_US_CARDS} />
       <ServicesCards {...OUR_SERVICES} />
-      <HowItWorksCards {...HOW_IT_WORKS_CARDS} />
-
       <BottomContent {...BOTTOM_CONTENT} />
     </div>
   );

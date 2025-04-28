@@ -1,0 +1,54 @@
+.single-filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.single-filter-label {
+  color: var(--Colors-Neutral-1000, #333);
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.filter-boxes-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.single-check-box {
+  display: flex;
+  height: 32px;
+  padding: 0px 12px;
+  align-items: center;
+  gap: 8px;
+  min-width: 50%;
+  box-sizing: border-box;
+
+  & input{
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  & label {
+    color:  rgba(0, 0, 0, 0.88);
+    text-overflow: ellipsis;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+.range-input{
+    width: 70%;
+}
