@@ -1,26 +1,24 @@
-import React from 'react'
+import React from "react";
+import "../styles/Home.css";
 
-const ServicesCards = ({heading,cards}) => {
+const ServicesCards = ({ heading, cards }) => {
   return (
-    <div>
-<h1>{heading}</h1>
-<div>
-    {cards.map((item, index) => {
-          return (
-            <div key={index} className="course-card-with-hr">
-              <div className="course-card">
+    <div className="services-outer-container">
+      <div className="services-conatiner">
+        <h1 className="services-heading">{heading}</h1>
+        <div className="services-card-conatiner">
+          {cards.map((item, index) => {
+            return (
+              <div key={index} className="service-card">
                 <img src={item.img} alt="icon" />
-                <h2>{item.title}</h2>
-        
+                <h2 className="service-card-text">{item.title}</h2>
               </div>
-              {/* {Cards[index+ 1] && <hr />} */}
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default ServicesCards
+export default ServicesCards;
