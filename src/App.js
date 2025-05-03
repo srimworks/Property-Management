@@ -9,6 +9,7 @@ import ProfileNav from './reusable/ProfileNav';
 import MyActivity from './components/ProfileDashboard/MyActivity';
 import MyTransactions from './components/ProfileDashboard/MyTransactions';
 import EditProfile from './components/ProfileDashboard/EditProfile';
+import ContactForm from './components/ContactForm';
 
 
 const AppRouter = () => {
@@ -27,7 +28,7 @@ const AppDashboard=()=>{
       {/* <DashboardNavbar /> */}
       <div className='dashboard-overall'>
         {/* <ProfileDashboardNav/> */}
-        <ProfileNav/>
+        {/* <ProfileNav/> */}
         <Outlet/>
     </div>
 
@@ -70,6 +71,10 @@ export const Routes = createBrowserRouter([
       {
         element: <EditProfile/>,
         path: "/edit-profile",
+      },
+      {
+        element: <ContactForm/>,
+        path: "/contact",
       },
 
    ]} ,

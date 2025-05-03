@@ -40,4 +40,7 @@ export const IMAGES = {
   CHEVRON_RIGHT:new URL('../images/common/chevronRight.svg',import.meta.url).href,
   AVATAR_ICON:new URL('../images/common/tenant-avatar.png',import.meta.url).href,
   ACCOUNT_CIRCLE_ICON:new URL('../images/common/account_circle.svg',import.meta.url).href,
+  CONTACT_MAIN:new URL('../images/common/contactMain.png',import.meta.url).href,
+  MAIL_ICON:new URL('../images/common/mail.svg',import.meta.url).href,
+  CALL_ICON:new URL('../images/common/call.svg',import.meta.url).href,
 };

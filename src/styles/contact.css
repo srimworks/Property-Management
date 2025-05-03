@@ -1,0 +1,222 @@
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 64px 32px;
+    width: 1300px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 16px;
+    background: var(--COLORS-Gray-100, #f7f9fa);
+    padding: 32px 48px;
+  }
+  
+  .get-in-touch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    max-width: 450px;
+  }
+  
+  .get-in-touch-heading {
+    color: var(--COLORS-Gray-700, #3e4143);
+  
+    /* Desktop/Heading/16 Bold */
+    font-family: "SF Pro Display";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.16px;
+    margin: 0;
+  }
+  
+  .get-in-touch-title {
+    color: var(--COLORS-Gray-900, #1c1d1f);
+  
+    /* Desktop/Heading/40 Medium */
+    font-family: "SF Pro Display";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.4px;
+    margin: 0;
+    max-width: 270px;
+  }
+  
+  .get-in-touch-content {
+    color: var(--COLORS-Gray-700, #3e4143);
+  
+    /* Desktop/Body/18 Regular */
+    font-family: "SF Pro Display";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    max-width: 407px;
+  }
+  
+  #input {
+    display: flex;
+    max-width: 475px;
+    padding: 16px 20px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid var(--COLORS-Gray-900, #1c1d1f);
+    background: var(--COLORS-Gray-100, #f7f9fa);
+    color: var(--COLORS-Gray-600, #54585b);
+  
+    /* Desktop/Body/16 Regular */
+    font-family: "SF Pro Display";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .contact-input {
+    width: 100%;
+  }
+  .form {
+    width: 100%;
+  }
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .contact-right {
+    display: flex;
+    width: 568px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+  }
+  
+  .line {
+    width: 100%;
+    border: 1px solid #d1d7dc;
+  }
+  
+  .contact-right-image-bottom {
+    display: flex;
+    padding: 24px 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    flex: 1 0 0;
+    border-radius: 16px;
+    background: var(--COLORS-Gray-100, #f7f9fa);
+  }
+  
+  .contact-mail-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .contact-mail-overall {
+    display: flex;
+    width: 183px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .contact-mail-heading {
+    color: var(--COLORS-Gray-700, #3e4143);
+    font-family: "SF Pro Display";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+  }
+  
+  .contact-mail-content {
+    color: var(--COLORS-Gray-600, #54585b);
+    font-family: "SF Pro Display";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  
+  @media (max-width:1000px) {
+    .contact-rigth-image{
+      display: none;
+    }
+    .contact-section{
+      flex-direction: column;
+    }
+    .contact-left{
+      box-sizing: border-box;
+      width: 100%;
+    }
+    #input{
+      width: 100%;
+      max-width: none;
+    }
+    .phonenumber-field{
+      width: 100%;
+      max-width: none;
+      box-sizing: border-box;
+    }
+    .get-in-touch{
+      width: 100%;
+      max-width: none;
+  
+    }
+    .contact-right-image-bottom{
+      width: 100%;
+      max-width:none;
+      box-sizing: border-box;
+    }
+    .contact-rigth{
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  
+  @media (max-width:600px) {
+    .contact-left{
+      padding: 0;
+      background-color: none;
+    }
+    #input{
+      font-size: 14px;
+    }
+    #input-phone{
+      font-size: 14px;
+      width: auto;
+    }
+    .phonenumber-field{
+      gap: 4px;
+    }
+    .country-dropdown{
+      font-size: 12px;
+      width: 40px;
+      min-width: none;
+    }
+  }
