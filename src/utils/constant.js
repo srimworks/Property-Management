@@ -1,7 +1,7 @@
 import { IMAGES } from "./images";
 
 // why choose us cards
-export const MAIN_SERACH_BAR_DATA = {
+export const MAIN_SEARCH_BAR_DATA = {
   items: [
     {
       title: "Buy",

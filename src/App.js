@@ -3,8 +3,12 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import NavBar from './reusable/NavBar';
 import Home from './components/Home';
 import ProfileDashboardNav from './reusable/ProfileDashboardNav';
-import ProfileDashboard from './components/ProfileDashboard';
+
 import Results from './components/Results';
+import ProfileNav from './reusable/ProfileNav';
+import MyActivity from './components/ProfileDashboard/MyActivity';
+import MyTransactions from './components/ProfileDashboard/MyTransactions';
+import EditProfile from './components/ProfileDashboard/EditProfile';
 
 
 const AppRouter = () => {
@@ -23,6 +27,7 @@ const AppDashboard=()=>{
       {/* <DashboardNavbar /> */}
       <div className='dashboard-overall'>
         {/* <ProfileDashboardNav/> */}
+        <ProfileNav/>
         <Outlet/>
     </div>
 
@@ -54,6 +59,19 @@ export const Routes = createBrowserRouter([
         element: <ProfileDashboardNav/>,
         path: "/profiledashboard",
       },
+      {
+        element:<MyActivity/>,
+        path: "/activity",
+      },
+      {
+        element: <MyTransactions/>,
+        path: "/transactions",
+      },
+      {
+        element: <EditProfile/>,
+        path: "/edit-profile",
+      },
+
    ]} ,
      
 ])

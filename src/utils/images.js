@@ -39,4 +39,5 @@ export const IMAGES = {
   EDIT_ICON:new URL('../images/common/editIcon.svg',import.meta.url).href,
   CHEVRON_RIGHT:new URL('../images/common/chevronRight.svg',import.meta.url).href,
   AVATAR_ICON:new URL('../images/common/tenant-avatar.png',import.meta.url).href,
+  ACCOUNT_CIRCLE_ICON:new URL('../images/common/account_circle.svg',import.meta.url).href,
 };

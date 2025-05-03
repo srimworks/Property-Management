@@ -22,17 +22,17 @@ const ProfileDashboardNav = () => {
    
       {
         name:"My Activity",
-        link:"/",
+        link:"/activity",
         Icon:IMAGES.CHEVRON_RIGHT
       },
       {
         name:"My Transactions",
-        link:"/",
+        link:"/transactions",
         Icon:IMAGES.MY_TRANSACTION_ICON
       },
       {
         name:"Edit Profile",
-        link:"/",
+        link:"/edit-profile",
         Icon:IMAGES.EDIT_ICON
       },
  
