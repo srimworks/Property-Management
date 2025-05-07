@@ -43,4 +43,7 @@ export const IMAGES = {
   CONTACT_MAIN:new URL('../images/common/contactMain.png',import.meta.url).href,
   MAIL_ICON:new URL('../images/common/mail.svg',import.meta.url).href,
   CALL_ICON:new URL('../images/common/call.svg',import.meta.url).href,
+  LOGIN_MAIN_FRAME:new URL('../images/common/loginFrame.svg',import.meta.url).href,
+  CHECK_RIGHT_ICON:new URL('../images/common/check.svg',import.meta.url).href,
+  EDIT_ICON:new URL('../images/common/Edit.svg',import.meta.url).href,
 };

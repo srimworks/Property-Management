@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router'
 import { IMAGES } from "../utils/images";
 import "../styles/contact.css";
-import { country_data } from "../utils/countryCodes";
+import { COUNTRY_DATA } from "../utils/countryCodes";
 
 const ContactForm = () => {
   const [countryEmoji, setCountryEmoji] = useState("🇮🇳");
@@ -93,7 +93,7 @@ const ContactForm = () => {
                   onChange={(e)=>handleCountry(JSON.parse(e.target.value).code,JSON.parse(e.target.value).flag)}
                 >
                   <option value="🇮🇳">{countryCode}</option>
-                  {country_data.map((item) => (
+                  {COUNTRY_DATA.map((item) => (
                     <option key={item.code} value={JSON.stringify({"flag":item.flag,"code":item.dial_code})}  >{item.dial_code}</option>
                   ))}
                 </select>

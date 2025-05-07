@@ -1,4 +1,4 @@
-const countries_data=[
+const Countries_data=[
     { name: "Afghanistan", flag: "🇦🇫", code: "AF", dial_code: "+93" },
     { name: "Åland Islands", flag: "🇦🇽", code: "AX", dial_code: "+358" },
     { name: "Albania", flag: "🇦🇱", code: "AL", dial_code: "+355" },
@@ -357,6 +357,6 @@ const countries_data=[
     { name: "Zimbabwe", flag: "🇿🇼", code: "ZW", dial_code: "+263" },
   ];
   
-  export const country_data=countries_data.sort((a,b)=>{
+  export const COUNTRY_DATA=Countries_data.sort((a,b)=>{
     return a.dial_code-b.dial_code
   })
