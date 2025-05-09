@@ -32,6 +32,15 @@
   align-items: center;
   width: 100%;
 }
+.sr-card-price {
+  color: var(--Colors-Neutral-1000, #333);
+  text-overflow: ellipsis;
+  font-family: Open Sans;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
 .sr-card-details {
   display: flex;
   align-items: center;

@@ -3,22 +3,22 @@ import "../styles/Results.css";
 import SideFilters from "../reusable/SideFilters";
 import { FILTER_DATA } from "../utils/constant";
 import SearchResultsCard from "../reusable/SearchResultsCard";
+import { Link } from "react-router";
 
 const Results = () => {
   const [selectedFilters, setSelectedFilters] = useState({});
 
   const handleChange = (id, value) => {
-    if (selectedFilters[id] && selectedFilters[id].includes(value)){
-      const updatedFilters={
+    if (selectedFilters[id] && selectedFilters[id].includes(value)) {
+      const updatedFilters = {
         ...selectedFilters,
-        [id]:[...selectedFilters[id].filter(item=>item!==value)]
-      }
+        [id]: [...selectedFilters[id].filter((item) => item !== value)],
+      };
 
-      setSelectedFilters(updatedFilters)
-      console.log(selectedFilters)
-      return 
+      setSelectedFilters(updatedFilters);
+      console.log(selectedFilters);
+      return;
     }
-
 
     if (selectedFilters[id]) {
       const updatedFilters = {
@@ -51,13 +51,14 @@ const Results = () => {
             />
           ))}
         </div>
-        
       </div>
-      <div className="filter-cards-container">
-          <SearchResultsCard/>
-          <SearchResultsCard/>
-          <SearchResultsCard/>
+      <Link to="/single-product-page" className="link-100">
+        <div className="filter-cards-container">
+          <SearchResultsCard />
+          <SearchResultsCard />
+          <SearchResultsCard />
         </div>
+      </Link>
     </div>
   );
 };

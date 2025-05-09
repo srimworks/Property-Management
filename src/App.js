@@ -14,6 +14,9 @@ import LoginPage_1 from './components/SignIn/LoginPage_1';
 import LoginPage_2 from './components/SignIn/LoginPage_2';
 import LoginPage_3 from './components/SignIn/LoginPage_3';
 
+import Results from './components/Results'
+import SingleProductPage from './components/SingleProductPage';
+import PostProperty from './components/PostProperty';
 
 
 const AppRouter = () => {
@@ -53,6 +56,14 @@ export const Routes = createBrowserRouter([
       {
         element: <Results/>,
         path: "/search-results",
+      },
+      {
+        element: <SingleProductPage/>,
+        path: "/single-product-page",
+      },
+      {
+        element: <PostProperty/>,
+        path: "/post-property",
       },
    ]} ,
 
