@@ -67,15 +67,20 @@ const NavBar = () => {
               </div>}
           </div>
         }
-        <Link to="/search-results" className='link'>
+        
         <div className='nav-right'>
+        <Link to="/search-results" className='link'>
             <h1 className='nav-right-text'>Buy/Sell</h1>
+            </Link>
             <h1 className='nav-right-text'>Rent/Lease</h1>
             <h1 className='nav-right-text'>Property Management</h1>
+            
+            <Link to="/post-property" className='link'>
             <h1 className='nav-right-text'>Post Property</h1>
+            </Link>
             <button className='primary-btn'>Sign In</button>
         </div>
-        </Link>
+        
     </nav>
   )
 }

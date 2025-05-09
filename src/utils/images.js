@@ -46,4 +46,27 @@ export const IMAGES = {
   LOGIN_MAIN_FRAME:new URL('../images/common/loginFrame.svg',import.meta.url).href,
   CHECK_RIGHT_ICON:new URL('../images/common/check.svg',import.meta.url).href,
   EDIT_ICON:new URL('../images/common/Edit.svg',import.meta.url).href,
+  PROPERTY_LOCATION:new URL('../images/common/PropertyLocation.svg',import.meta.url).href,
+
+  PROPERTY_IMAGE_1:new URL('../images/common/PropertyImage1.png',import.meta.url).href,
+  PROPERTY_IMAGE_2:new URL('../images/common/PropertyImage2.png',import.meta.url).href,
+  PROPERTY_IMAGE_3:new URL('../images/common/PropertyImage3.png',import.meta.url).href,
+  PROPERTY_IMAGE:new URL('../images/common/PropertyImage.png',import.meta.url).href,
+
+
+  SMALL_LOGO_ICON:new URL('../images/PostProperty/SmallLogo.svg',import.meta.url).href,
+  AMENITIES_ICON:new URL('../images/PostProperty/Amenities.svg',import.meta.url).href,
+  GALLERY_ICON:new URL('../images/PostProperty/Gallery.svg',import.meta.url).href,
+  LOCALITY_DETAILS_ICON:new URL('../images/PostProperty/LocalityDetails.svg',import.meta.url).href,
+  PROPERTY_DETAILS_ICON:new URL('../images/PostProperty/PropertyDetails.svg',import.meta.url).href,
+  RENTAL_DETAILS_ICON:new URL('../images/PostProperty/RentalDetails.svg',import.meta.url).href,
+  SCHEDULE_ICON:new URL('../images/PostProperty/Schedule.svg',import.meta.url).href,
+  LOCATION_ICON:new URL('../images/PostProperty/LocationIcon.svg',import.meta.url).href,
+  GPS_ICON:new URL('../images/PostProperty/GpsIcon.svg',import.meta.url).href,
+  PLUS_ICON:new URL('../images/PostProperty/PlusIcon.svg',import.meta.url).href,
+  MINUS_ICON:new URL('../images/PostProperty/MinusIcon.svg',import.meta.url).href,
+  CAMERA_ICON:new URL('../images/PostProperty/CamerIcon.svg',import.meta.url).href,
+
+
+
 };
