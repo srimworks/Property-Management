@@ -10,9 +10,6 @@ import MyActivity from './components/ProfileDashboard/MyActivity';
 import MyTransactions from './components/ProfileDashboard/MyTransactions';
 import EditProfile from './components/ProfileDashboard/EditProfile';
 import ContactForm from './components/ContactForm';
-import LoginPage_1 from './components/SignIn/LoginPage_1';
-import LoginPage_2 from './components/SignIn/LoginPage_2';
-import LoginPage_3 from './components/SignIn/LoginPage_3';
 
 import Results from './components/Results'
 import SingleProductPage from './components/SingleProductPage';
@@ -36,7 +33,8 @@ const AppDashboard=()=>{
       <div className='dashboard-overall'>
         {/* <ProfileDashboardNav/> */}
         {/* <ProfileNav/> */}
-        <Outlet/>
+        <NavBar/>
+        <ProfileDashboardNav/>
     </div>
 
     </>
@@ -65,44 +63,31 @@ export const Routes = createBrowserRouter([
         element: <PostProperty/>,
         path: "/post-property",
       },
+            {
+        element: <ContactForm/>,
+        path: "/contact",
+      },
    ]} ,
 
    {
     element: <AppDashboard/>,
     path: "/",
     children: [
-      {
-        element: <ProfileDashboardNav/>,
-        path: "/profiledashboard",
-      },
+
       {
         element:<MyActivity/>,
-        path: "/activity",
+        path: "/profile",
       },
       {
         element: <MyTransactions/>,
-        path: "/transactions",
+        path: "/profile/properties",
       },
       {
         element: <EditProfile/>,
-        path: "/edit-profile",
+        path: "/profile/edit-profile",
       },
-      {
-        element: <ContactForm/>,
-        path: "/contact",
-      },
-      {
-        element: <LoginPage_1/>,
-        path: "/login-1",
-      },
-      {
-        element: <LoginPage_2/>,
-        path: "/login-2",
-      },
-      {
-        element: <LoginPage_3/>,
-        path: "/login-3",
-      },
+
+
 
    ]} ,
      
