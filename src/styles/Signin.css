@@ -93,7 +93,7 @@
   }
 }
 
-.phonenumber-field {
+.phonenumber-field-login {
   display: flex;
   max-width: 475px;
   padding: 16px 20px;
@@ -123,7 +123,7 @@
   line-height: normal;
 }
 
-#input-phone {
+#input-phone-login {
   color: var(--COLORS-Gray-600, #54585b);
   font-family: Poppins;
   font-size: 14px;
@@ -250,4 +250,37 @@
     & img{
         cursor: pointer;
     }
+}
+
+@media (max-width:850px) {
+  .signin-container{
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width:700px) {
+  .signin-left-container{
+    display: none;
+  }
+
+}
+
+@media (max-width:400px) {
+    .signin-right-container{
+    width: auto;
+    padding: 24px 24px;
+  }
+  .phonenumber-field-login{
+    padding-inline: 8px;
+  }
+  #input-phone-login{
+    font-size: 12px;
+  }
+
+  .form-grid p{
+    font-size: 12px;
+  }
+  .signin-right-container p{
+    font-size: 12px;
+  }
 }

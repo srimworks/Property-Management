@@ -33,7 +33,7 @@ const Number = ({ setFlowValue, formData, setFormData }) => {
   //API Call
   return (
     <div className="form-grid">
-      <div className="phonenumber-field">
+      <div className="phonenumber-field-login">
         <div className="country-container">
           <span className="country-text">{countryEmoji}</span>
           <select
@@ -61,7 +61,7 @@ const Number = ({ setFlowValue, formData, setFormData }) => {
           </select>
         </div>
         <input
-          id="input-phone"
+          id="input-phone-login"
           type="text"
           name="mobile"
           value={formData.mobile}

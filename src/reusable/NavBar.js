@@ -12,6 +12,7 @@ const NavBar = () => {
   const [selectedCities, setSelectedCities] = useState([]);
   const [inputText, setInputText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
+  const [mobiledropdown,setMobileDropdown]=useState(false)
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -42,84 +43,98 @@ const NavBar = () => {
       );
   };
 
+  const handleSignin=()=>{
+    setShowLogin(true);
+    setMobileDropdown(false)
+  }
+
   return (
     <nav className={location === "/" ? "nav-home" : "nav"}>
-      <Link to="/" className="link">
+      
         <div className="nav-left">
-          <img src={IMAGES.MAIN_LOGO} alt="main-logo" />
-          <h1 className="logo-text">RealEstatePro</h1>
+          <Link to="/" className="link">
+          <div className="nav-logo">
+            <img src={IMAGES.MAIN_LOGO} alt="main-logo" />
+            <h1 className="logo-text">RealEstatePro</h1>
         </div>
-      </Link>
-      {(location !== "/" && !location.includes("/profile")) && (
-        <div className="nav-search-with-results">
-          <div className="nav-search-bar">
-            <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" />
-            {/* Selected Cities */}
-            <div className="selected-locations-nav">
-              {selectedCities.map((item, index) => (
-                <div key={index} className="selected-location">
-                  {item}
-                  <img
-                    src={IMAGES.WHITE_CLOSE_ICON}
-                    onClick={() => handleRemoveCities(index)}
-                  />
-                </div>
-              ))}
+        </Link>
+        {location !== "/" && !location.includes("/profile") && (
+          <div className="nav-search-with-results">
+            <div className="nav-search-bar">
+              <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" />
+              {/* Selected Cities */}
+              <div className="selected-locations-nav">
+                {selectedCities.map((item, index) => (
+                  <div key={index} className="selected-location">
+                    {item}
+                    <img
+                      src={IMAGES.WHITE_CLOSE_ICON}
+                      onClick={() => handleRemoveCities(index)}
+                    />
+                  </div>
+                ))}
+              </div>
+              {/* Input Container */}
+              {selectedCities.length < 3 && (
+                <input
+                  type="text"
+                  placeholder="Search up to 3 localities"
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              )}
             </div>
-            {/* Input Container */}
-            {selectedCities.length < 3 && (
-              <input
-                type="text"
-                placeholder="Search up to 3 localities"
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
+            {/* DropDownContaner */}
+            {showSearchResults && (
+              <div className="nav-search-results">
+                {filtered_list !== null &&
+                  filtered_list.map((item, index) => (
+                    <li
+                      key={index}
+                      className="nav-result-item"
+                      onClick={() => {
+                        handleSelectedCitites(item);
+                      }}
+                    >
+                      {item}
+                    </li>
+                  ))}
+              </div>
             )}
           </div>
-          {/* DropDownContaner */}
-          {showSearchResults && (
-            <div className="nav-search-results">
-              {filtered_list !== null &&
-                filtered_list.map((item, index) => (
-                  <li
-                    key={index}
-                    className="nav-result-item"
-                    onClick={() => {
-                      handleSelectedCitites(item);
-                    }}
-                  >
-                    {item}
-                  </li>
-                ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      <div className="nav-right">
-        {!location.includes("/profile") && (
-          <>
-            <Link to="/search-results" className="link">
-              <h1 className="nav-right-text">Buy/Sell</h1>
-            </Link>
-            <h1 className="nav-right-text">Rent/Lease</h1>
-            <h1 className="nav-right-text">Property Management</h1>
-          </>
         )}
+        <span className="material-symbols-outline" onClick={()=>setMobileDropdown(!mobiledropdown)}>dehaze</span>
+        </div>
+      
+      <div className={mobiledropdown ?"nav-center-active" :"nav-center"}>
+        
 
-        <Link to="/post-property" className="link">
-          <h1 className="nav-right-text">Post Property</h1>
-        </Link>
-        <button className="primary-btn" onClick={() => setShowLogin(true)}>
-          Sign In
-        </button>
+        <div className="nav-right">
+          {!location.includes("/profile") && (
+            <>
+              <Link to="/search-results" className={mobiledropdown ? "link-100":"link"}>
+                <h1 className="nav-right-text">Buy/Sell</h1>
+              </Link>
+              <h1 className="nav-right-text">Rent/Lease</h1>
+              <h1 className="nav-right-text">Property Management</h1>
+            </>
+          )}
+
+          <Link to="/post-property" className={mobiledropdown ? "link-100":"link"}>
+            <h1 className="nav-right-text">Post Property</h1>
+          </Link>
+          <button className="primary-btn" onClick={handleSignin}>
+            Sign In
+          </button>
+        </div>
+        
       </div>
       {showLogin && (
-        <div className="login-container">
-          <LoginPage setShowLogin={setShowLogin} />
-        </div>
-      )}
+          <div className="login-container">
+            <LoginPage setShowLogin={setShowLogin} />
+          </div>
+        )}
     </nav>
   );
 };
