@@ -25,11 +25,17 @@
  
 }
 
-.nav-left {
+.nav-logo {
   display: flex;
   height: 2rem;
   align-items: center;
   gap: 0.25rem;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .logo-text {
@@ -159,4 +165,81 @@
   height: 100vh;
   z-index: 2;
   background-color: #00000075;
+}
+
+.nav-center{
+  display: flex;
+  width: 100%;
+  justify-content: right;
+}
+
+.material-symbols-outline {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 48px;  /* Preferred icon size */
+  display: none;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: #fff;
+  font-variation-settings:
+  'wght' 200,   /* Thinner stroke, default is 400 */
+  'GRAD' 0,     /* No extra thickness */
+  'FILL' 0,     /* Outline style */
+  'opsz' 48; 
+  cursor: pointer;
+}
+
+@media (max-width:1000px) {
+  .nav-center{
+    display: none;
+  }
+  .nav-home{
+    padding-inline: 32px;
+    flex-direction: column;
+  }
+  .nav{
+    padding-inline: 32px;
+    flex-direction: column;
+  }
+  .material-symbols-outline{
+    display: inline-block;
+  }
+  .nav-right{
+    flex-direction: column;
+  }
+  .nav-search-with-results{
+    width: 100%;
+    max-width: 600px;
+  }
+  .nav-center-active{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-right{
+    width: 100%;
+    max-width: 600px;
+    align-items: flex-start;
+    padding-top: 16px;
+    gap: 8px;
+  }
+  .nav-right-text{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d9d9d9;
+    width: 100%;
+  }
+}
+
+@media (max-width:600px) {
+  .logo-text{
+    display: none;
+  }
 }
