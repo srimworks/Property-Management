@@ -3,7 +3,9 @@ import ProfileActivityCards from '../../reusable/ProfileActivityCards'
 
 const MyActivity = () => {
   return (
-    <div>
+    <div className='profile-cards-container'>
+      <ProfileActivityCards/>
+      <ProfileActivityCards/>
       <ProfileActivityCards/>
     </div>
   )

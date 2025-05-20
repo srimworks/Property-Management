@@ -12,6 +12,7 @@ export const IMAGES = {
   WHY_CHOOS_SVG: new URL("../images/common/WhyChooseCard.svg",import.meta.url).href,
   SEARCH_ICON: new URL("../images/common/Search Icon.svg",import.meta.url).href,
   SEARCH_ICON_BLACK: new URL("../images/common/SearchIconBlack.svg",import.meta.url).href,
+  INTERIOR_IMAGE: new URL("../images/common/InteriorImage.png",import.meta.url).href,
 
   SERVICES_IMG_1:new URL('../images/home/services/img1.png',import.meta.url).href,
   SERVICES_IMG_2:new URL('../images/home/services/img2.png',import.meta.url).href,
@@ -22,6 +23,7 @@ export const IMAGES = {
   HOW_IT_WORKS_3:new URL('../images/home/how it works/howIcon-3.svg',import.meta.url).href,
   HOW_IT_WORKS_4:new URL('../images/home/how it works/howIcon-4.svg',import.meta.url).href,
   HOME_HERO:new URL('../images/home/HeroSection Image.png',import.meta.url).href,
+  CLOSE_ICON:new URL('../images/home/CloseIcon.svg',import.meta.url).href,
   
 
   SHARE_ICON:new URL('../images/common/ShareIcon.svg',import.meta.url).href,

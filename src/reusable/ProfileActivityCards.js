@@ -1,41 +1,36 @@
-import React from "react";
-import "../styles/SearchResultsCard.css";
-// import { IMAGES } from '../utils/images'
 import { IMAGES } from "../utils/images";
+import "../styles/ProfileActivityCard.css";
 
 const ProfileActivityCards = () => {
   return (
-    <div className="search-results-card">
-      <div className="sr-card-top">
-        <div className="sr-top-image">
-          <img src={IMAGES.SEARCHRESULTS_IMAGE} alt="Image" />
+    <div className="profile-activity-card">
+      <div className="profile-activity-image">
+        <img src={IMAGES.INTERIOR_IMAGE} alt="Image" />
+      </div>
+      <div className="profile-activity-content">
+        <div className="profile-activity-top-content">
+          <p>₹20,000</p>
+          <p>1 BHK Independent Builder Floor</p>
+          <div className="row-stack">
+            <p>Fully Furnished</p> <hr /> <p>180 sq.ft</p>
+          </div>
         </div>
-        <div className="sr-top-content">
-          <div className="sr-top-price">
-            <h2 className="sr-card-price">₹ 25,000</h2>
-            {/* <img src={IMAGES.SHARE_ICON} /> */}
-          </div>
-          <div className="sr-card-details">
-            <p className="sr-card-details-type">
-              1 BHK Independent Builder Floor
-            </p>
-            {/* <p className='sr-card-details-location'> for rent in kukatpally</p> */}
-          </div>
-
-          <div className="sr-card-bottom-left">
-            <img src={IMAGES.AVATAR} />
-            <div className="sr-card-b-left-content">
-              <h3 className="sr-card-b-left-heading">Housing Partner</h3>
-              <p className="sr-card-b-left-body">Owner</p>
-              {/* <p className='sr-card-b-left-body'>5 days ago</p> */}
+        <div className="profile-activity-bottom">
+          <div className="profile-activity-btm-left">
+            <h3>HP</h3>
+            <div className="profile-activity-btm-stack">
+              <p className="stack-heading">Housing Partner</p>
+              <p className="stack-btm">Rented</p>
             </div>
           </div>
-          <div className="sr-card-bottom-right">
-            {/* <button className="secondary-btn">View more details</button> */}
-            <p>Phone Number</p>
-            <h2>7799480509</h2>
-            <button className="primary-btn">Share Feedback</button>
+          <div className="profile-activity-btm-right">
+            <div className="profile-activity-btm-stack">
+              <p className="stack-btm">Phone Number</p>
+              <p className="stack-heading">7799480509</p>
+            </div>
+            <button className="secondary-btn">Share Feedback</button>
           </div>
+          
         </div>
       </div>
     </div>

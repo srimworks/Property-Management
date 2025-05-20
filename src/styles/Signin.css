@@ -1,0 +1,286 @@
+.signin-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.signin-left-container {
+  display: flex;
+  width: 331px;
+  height: 550px;
+  padding: 0px 64px 0px 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  background: #f8f8f8;
+
+  & h1 {
+    color: var(--Colors-Neutral-1000, #333);
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 39px; /* 162.5% */
+  }
+
+  & p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--Colors-Neutral-1000, #333);
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.signin-right-container {
+  display: flex;
+  width: 503px;
+  height: 550px;
+  padding: 64px 50px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fff;
+
+  & p {
+    color: var(--COLORS-Gray-600, #54585b);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.form {
+  display: flex;
+  height: 235px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  flex-shrink: 0;
+
+  & h1 {
+    color: var(--Colors-Neutral-1000, #333);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & p {
+    color: var(--COLORS-Gray-600, #54585b);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.phonenumber-field-login {
+  display: flex;
+  max-width: 475px;
+  padding: 16px 20px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  background: var(--COLORS-Gray-100, #f7f9fa);
+  width: 100%;
+}
+.country-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.country-dropdown {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--COLORS-Gray-900, #1c1d1f);
+  font-family: "SF Pro Display";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#input-phone-login {
+  color: var(--COLORS-Gray-600, #54585b);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.country-text {
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.phone-number-edit {
+  display: flex;
+  max-width: 475px;
+  padding: 16px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 1px solid var(--sds-color-border-default-default);
+  background: var(--Colors-Neutral-200, #e8e8e8);
+  width: 100%;
+
+  & input {
+    border: none;
+    background-color: none;
+    color: var(--Colors-Neutral-1000, #333);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  & img {
+    cursor: pointer;
+  }
+}
+
+.enter-otp {
+  color: var(--Colors-Neutral-1000, #333);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 16px;
+}
+
+#input-otp {
+  display: flex;
+  height: 56px;
+  max-width: 475px;
+  width: 100%;
+  padding: 16px 20px 0px 0px;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #d9d9d9;
+  color: var(--Colors-Neutral-1000, #333);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.resend-otp {
+  color: #3498db !important;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  text-align: right;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.details-input {
+  display: flex;
+  max-width: 475px;
+  padding: 16px 20px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  color: var(--COLORS-Gray-600, #54585b);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.close-icon-container{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+
+    & img{
+        cursor: pointer;
+    }
+}
+
+@media (max-width:850px) {
+  .signin-container{
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width:700px) {
+  .signin-left-container{
+    display: none;
+  }
+
+}
+
+@media (max-width:400px) {
+    .signin-right-container{
+    width: auto;
+    padding: 24px 24px;
+  }
+  .phonenumber-field-login{
+    padding-inline: 8px;
+  }
+  #input-phone-login{
+    font-size: 12px;
+  }
+
+  .form-grid p{
+    font-size: 12px;
+  }
+  .signin-right-container p{
+    font-size: 12px;
+  }
+}
