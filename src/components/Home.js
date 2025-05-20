@@ -15,9 +15,9 @@ const Home = () => {
   return (
     <div className="outlet-render-home">
       <HomeHero/>
-      {/* <WhyChooseCards {...WHY_CHOOSE_US_CARDS} />
+      <WhyChooseCards {...WHY_CHOOSE_US_CARDS} />
       <ServicesCards {...OUR_SERVICES} />
-      <BottomContent {...BOTTOM_CONTENT} /> */}
+      <BottomContent {...BOTTOM_CONTENT} />
     </div>
   );
 };
