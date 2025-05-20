@@ -67,6 +67,9 @@ export const IMAGES = {
   MINUS_ICON:new URL('../images/PostProperty/MinusIcon.svg',import.meta.url).href,
   CAMERA_ICON:new URL('../images/PostProperty/CamerIcon.svg',import.meta.url).href,
 
+  FACEBOOK_ICON:new URL('../images/common/facebook.svg',import.meta.url).href,
+  INSTAGRAM_ICON:new URL('../images/common/instagram.svg',import.meta.url).href,
+  TWITTER_ICON:new URL('../images/common/twitter.svg',import.meta.url).href,
 
 
 };

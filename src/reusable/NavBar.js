@@ -78,7 +78,9 @@ const NavBar = () => {
             <Link to="/post-property" className='link'>
             <h1 className='nav-right-text'>Post Property</h1>
             </Link>
+            <Link to='/login-1' className='link'>
             <button className='primary-btn'>Sign In</button>
+            </Link>
         </div>
         
     </nav>

@@ -17,6 +17,7 @@ import LoginPage_3 from './components/SignIn/LoginPage_3';
 import Results from './components/Results'
 import SingleProductPage from './components/SingleProductPage';
 import PostProperty from './components/PostProperty';
+import Footer from './reusable/Footer';
 
 
 const AppRouter = () => {
@@ -24,6 +25,7 @@ const AppRouter = () => {
     <>
        <NavBar/>
       <Outlet />
+      <Footer/>
     </>
   );
 };
@@ -65,6 +67,22 @@ export const Routes = createBrowserRouter([
         element: <PostProperty/>,
         path: "/post-property",
       },
+      {
+        element: <ContactForm/>,
+        path: "/contact",
+      },
+      {
+        element: <LoginPage_1/>,
+        path: "/login-1",
+      },
+      {
+        element: <LoginPage_2/>,
+        path: "/login-2",
+      },
+      {
+        element: <LoginPage_3/>,
+        path: "/login-3",
+      },
    ]} ,
 
    {
@@ -87,22 +105,7 @@ export const Routes = createBrowserRouter([
         element: <EditProfile/>,
         path: "/edit-profile",
       },
-      {
-        element: <ContactForm/>,
-        path: "/contact",
-      },
-      {
-        element: <LoginPage_1/>,
-        path: "/login-1",
-      },
-      {
-        element: <LoginPage_2/>,
-        path: "/login-2",
-      },
-      {
-        element: <LoginPage_3/>,
-        path: "/login-3",
-      },
+
 
    ]} ,
      
