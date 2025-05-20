@@ -68,19 +68,7 @@ export const Routes = createBrowserRouter([
       {
         element: <ContactForm/>,
         path: "/contact",
-      },
-      {
-        element: <LoginPage_1/>,
-        path: "/login-1",
-      },
-      {
-        element: <LoginPage_2/>,
-        path: "/login-2",
-      },
-      {
-        element: <LoginPage_3/>,
-        path: "/login-3",
-      },
+      }
 
    ]} ,
 
