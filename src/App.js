@@ -65,10 +65,23 @@ export const Routes = createBrowserRouter([
         element: <PostProperty/>,
         path: "/post-property",
       },
-            {
+      {
         element: <ContactForm/>,
         path: "/contact",
       },
+      {
+        element: <LoginPage_1/>,
+        path: "/login-1",
+      },
+      {
+        element: <LoginPage_2/>,
+        path: "/login-2",
+      },
+      {
+        element: <LoginPage_3/>,
+        path: "/login-3",
+      },
+
    ]} ,
 
    {
@@ -86,8 +99,10 @@ export const Routes = createBrowserRouter([
       },
       {
         element: <EditProfile/>,
-        path: "/profile/edit-profile",
+        path: "/edit-profile",
       },
+
+    
 
 
 
