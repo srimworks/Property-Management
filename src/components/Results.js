@@ -4,10 +4,19 @@ import SideFilters from "../reusable/SideFilters";
 import { FILTER_DATA } from "../utils/constant";
 import SearchResultsCard from "../reusable/SearchResultsCard";
 import { Link } from "react-router";
+import { IMAGES } from "../utils/images.js";
 
 const Results = () => {
   const [selectedFilters, setSelectedFilters] = useState({});
+  const [showFilters, setShowFilters] = useState(false);
 
+  const resetFilters = () => {
+    setSelectedFilters({});
+  };
+
+  const handleShowFilter = () => {
+    setShowFilters(!showFilters);
+  };
   const handleChange = (id, value) => {
     if (selectedFilters[id] && selectedFilters[id].includes(value)) {
       const updatedFilters = {
@@ -39,8 +48,20 @@ const Results = () => {
   console.log(selectedFilters);
   return (
     <div className="outlet-render-filter">
-      <div className="filter-overall-container">
+      <div
+        className={
+          showFilters
+            ? "filter-overall-container-mobile"
+            : "filter-overall-container"
+        }
+      >
+        <div className="filter-overall-container-inner">
+        <img src={IMAGES.CLOSE_ICON} className="close-icon" alt="Close Icon" onClick={()=>setShowFilters(false)} />
         <h2 className="filters-heading">Filters</h2>
+        <div className="reset-container" onClick={resetFilters}>
+          <span className="material-symbols-reset">replay</span>
+          <p className="reset-text">Reset</p>
+        </div>
         <div className="filters-contianer">
           {FILTER_DATA.map((item) => (
             <SideFilters
@@ -50,15 +71,27 @@ const Results = () => {
               selectedFilters={selectedFilters}
             />
           ))}
+          <button className="secondary-btn" onClick={handleShowFilter}>
+            Submit
+          </button>
+        </div>
         </div>
       </div>
-      <Link to="/single-product-page" className="link-100">
-        <div className="filter-cards-container">
+
+      <div className="filter-cards-container">
+        <button
+          className="secondary-btn"
+          id="filters-btn"
+          onClick={handleShowFilter}
+        >
+          Filters
+        </button>
+        <Link to="/single-product-page" className="link-100" id="gap">
           <SearchResultsCard />
           <SearchResultsCard />
           <SearchResultsCard />
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

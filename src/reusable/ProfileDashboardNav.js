@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import { useNavigate } from 'react-router';
 // import { Link } from 'react-router';
-import { IMAGES } from "../utils/images";
+import { IMAGES } from "../utils/images.js";
 import { Link, Outlet } from "react-router";
 import "../styles/Dashboard.css";
 
 const ProfileDashboardNav = () => {
+  const[hamburgerActive,setHambuger]=useState(false)
   // const [authenticated,setAuthenticated]=useState(null);
   // // const navigate=useNavigate()
   // useEffect(()=>{
@@ -19,6 +20,10 @@ const ProfileDashboardNav = () => {
   // },[])
   const [tab,setTab]=useState(0)
 
+  const handleTab=()=>{
+    setTab(index)
+    setHambuger(false)
+  }
   const DashboardTabs = [
     {
       name: "My Activity",
@@ -51,13 +56,13 @@ const ProfileDashboardNav = () => {
             <h2 className="profile-name">Teja</h2>
             <h2 className="profile-email">mahalteja01@gmail.com</h2>
           </div>
+          <img src={IMAGES.HAMBURGER_ICON} onClick={()=>setHambuger(true)} alt="Hamburger Icon " className="hamburger"/>
         </div>
-
-        <div className="left-bottom-container">
+        <div className={hamburgerActive?"left-bottom-container-active":"left-bottom-container"}>
           <ul>
             {DashboardTabs.map((item, index) => {
               return (
-                <Link to={item.link} key={item.name} className="link-100" onClick={()=>setTab(index)}>
+                <Link to={item.link} key={item.name} className="link-100" onClick={handleTab}>
                   <li className={pathname===item.link ? "li-active":"li"}>
                     {item.name} <img src={IMAGES.CHEVRON_RIGHT} />
                   </li>

@@ -10,7 +10,7 @@
 }
 
 .profile-activity-image {
-  width: 150px;
+  width: 200px;
   height: 180px;
   display: flex;
   align-items: center;
@@ -104,4 +104,16 @@ line-height: normal;
 .profile-activity-btm-right{
     display: flex;
     gap: 24px;
+}
+@media (max-width:750px) {
+   .profile-activity-image{
+    display: none;
+  }
+}
+
+@media (max-width:600px) {
+  .profile-activity-bottom{
+    flex-wrap: wrap;
+    gap: 4px;
+  }
 }

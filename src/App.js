@@ -87,7 +87,7 @@ export const Routes = createBrowserRouter([
       },
       {
         element: <EditProfile/>,
-        path: "/edit-profile",
+        path: "/profile/edit-profile",
       },
 
     

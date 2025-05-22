@@ -415,3 +415,58 @@ line-height: 1.3125rem; /* 113.514% */
     display: none;
   }
 }
+
+
+@media (max-width:700px) {
+  .product-image-container{
+    flex-direction: column;
+  }
+  .images-container{
+    flex-direction: row;
+    width: 100%;
+    max-width: none;
+  }
+  .image-2, .image-3{
+    height: 100%;
+  }
+}
+
+@media (max-width:500px) {
+  .product-hero-section{
+    gap: 16px;
+  }
+  .product-hero-section{
+    padding-inline: 24px;
+  }
+  .property-highlights {
+    padding-inline: 24px;
+  }
+  .breadcrumbs-container{
+    flex-wrap: wrap;
+  }
+  .listing-info{
+    flex-wrap: wrap;
+  }
+  .price-info{
+    flex-direction: row;
+    width: 100%;
+    max-width: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .overview-details-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .furnishing-icons-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .furnishing-icon-container{
+    flex-direction: row;
+  }
+  .overview-item{
+    width: 100%;
+  }
+}
