@@ -380,3 +380,39 @@
   justify-content: center;
   font-size: 12px;
 }
+
+@media (max-width:700px) {
+  .middle-bar-container{
+    flex-direction: column;
+  }
+  .middle-side-bar{
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .sidebar-text-container-active{
+    max-width: 227px;
+  }
+  .sidebar-text-container{
+    max-width: 227px;
+  }
+  .post-property-main-content{
+    padding-inline: 16px;
+  }
+  .top-bar img{
+    display: none;
+  }
+  .progressbar-container{
+    width: 100%;
+  }
+  .middle-heading{
+    padding-left: 16px;
+  }
+  .input-fields-container{
+    padding-left: 16px;
+  }
+  .progessbar-text{
+    font-size: 14px;
+    text-wrap: nowrap;
+  }
+}

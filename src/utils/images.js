@@ -3,6 +3,7 @@
 export const IMAGES = {
   MAIN_LOGO:new URL('../images/common/logomark.svg',import.meta.url).href,
   WHITE_CLOSE_ICON:new URL('../images/common/WhiteCloseIcon.svg',import.meta.url).href,
+  HAMBURGER_ICON:new URL('../images/common/hamburger.svg',import.meta.url).href,
   
   COURSE_ICON_1:new URL('../images/home/courseIcon-1.svg',import.meta.url).href,
   COURSE_ICON_2:new URL('../images/home/courseIcon-2.svg',import.meta.url).href,

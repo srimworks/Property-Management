@@ -52,7 +52,7 @@ const NavBar = () => {
     <nav className={location === "/" ? "nav-home" : "nav"}>
       
         <div className="nav-left">
-          <Link to="/" className="link">
+          <Link to="/" className="link" onClick={()=>setMobileDropdown(false)}>
           <div className="nav-logo">
             <img src={IMAGES.MAIN_LOGO} alt="main-logo" />
             <h1 className="logo-text">RealEstatePro</h1>
@@ -113,7 +113,7 @@ const NavBar = () => {
         <div className="nav-right">
           {!location.includes("/profile") && (
             <>
-              <Link to="/search-results" className={mobiledropdown ? "link-100":"link"}>
+              <Link to="/search-results" className={mobiledropdown ? "link-100":"link"}  onClick={()=>setMobileDropdown(false)}>
                 <h1 className="nav-right-text">Buy/Sell</h1>
               </Link>
               <h1 className="nav-right-text">Rent/Lease</h1>

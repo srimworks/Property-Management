@@ -1,10 +1,10 @@
-.outlet-render-filter{
+.outlet-render-filter {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   margin-top: 90px;
   padding: 0px 64px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
 }
 .filter-overall-container {
   display: flex;
@@ -15,6 +15,12 @@
   width: 100%;
   position: sticky;
   top: 91px;
+  background-color: #fff;
+}
+.filter-overall-container-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: #fff;
 }
 .filters-heading {
@@ -41,10 +47,89 @@
   box-sizing: border-box;
 }
 
-.filter-cards-container{
+.filter-cards-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+}
+.reset-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 16px 0px 0px;
+  cursor: pointer;
+}
+.material-symbols-reset {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+.close-icon{
+  display: none;
+  width: 24px;
+  margin: 16px;
+
+}
+#filters-btn{
+  display: none;
+}
+.reset-text {
+  color: var(--Colors-Neutral-1000, #333);
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 16px */
+}
+#gap{
+    display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+@media (max-width:1150px) {
+  .filter-overall-container{
+    display: none;
+  }
+    .close-icon{
+    display: block;
+  }
+  #filters-btn{
+    display: block;
+    width: fit-content;
+    align-self: flex-end;
+
+  }
+  .filter-overall-container-mobile {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  overflow-y: scroll;
+  margin-inline: 16px;
+  width: 100%;
+  position:fixed;
+  padding-inline: 64px;
+  z-index: 2;
+  top: 91px;
+  background-color: #0200003e;
+}
+}
+
+@media (max-width:900px) {
+  .outlet-render-filter{
+    padding-inline:16px;
+  }
 }

@@ -574,9 +574,8 @@ export const PRODUCT_ADD_DATA = [
         required: true,
         locationIcon: IMAGES.LOCATION_ICON,
         GpsIcon: IMAGES.GPS_ICON,
-        GpsLabel:"Use current location",
+        GpsLabel: "Use current location",
         placeHolder: "Enter Location",
-
       },
     ],
   },
@@ -625,7 +624,7 @@ export const PRODUCT_ADD_DATA = [
         label: "Available From",
         required: true,
       },
-      
+
       {
         type: "dropdown",
         id: "furnishing",
@@ -791,7 +790,7 @@ export const PRODUCT_ADD_DATA = [
         type: "upload",
         id: "images",
         label: "Add photos to get 5X more responses.",
-        btn:"Add Photos"
+        btn: "Add Photos",
       },
     ],
   },
@@ -804,22 +803,119 @@ export const PRODUCT_ADD_DATA = [
         type: "dropdown",
         id: "availability",
         label: "Availability",
-        options:[
+        options: [
           "Select",
           "Everyday Mon-Sun",
           "Weekday Mon-Fri",
           "Weekend Sat,Sun",
-        ]
+        ],
       },
       {
         type: "checkbox",
         id: "schedule",
         label: "Select Time Schedule",
-        options:[
-
-          "Available All Day","Available Morning","Available Afternoon"
-        ]
+        options: [
+          "Available All Day",
+          "Available Morning",
+          "Available Afternoon",
+        ],
       },
+    ],
+  },
+];
+
+export const FOOTER_LIST = [
+  {
+    name: "Real Estate",
+    propertyList: [
+      "Flats in Mumbai",
+      "Flats in Bangalore",
+      "Flats in Hyderabad",
+      "Flats in Pune",
+      "Flats in Chennai",
+      "Flats in Delhi",
+      "Flats in Gurgaon",
+      "Flats in Noida",
+      "Flats in Kolkata",
+      "Flats in Ahmedabad",
+      "Flats in Thane",
+      "Flats in Navi Mumbai",
+      "Flats in Faridabad",
+      "Flats in Ghaziabad",
+      "Flats in Coimbatore",
+      "Properties in India",
+      "Agriculture Lands in India",
+      "Plots in India",
+      "Flats in India",
+    ],
+  },
+  {
+    name: "Rentals",
+    propertyList: [
+      "Flats for rent in Mumbai",
+      "Flats for rent in Bangalore",
+      "Flats for rent in Hyderabad",
+      "Flats for rent in Pune",
+      "Flats for rent in Chennai",
+      "Flats for rent in Delhi",
+      "Flats for rent in Gurgaon",
+      "Flats for rent in Noida",
+      "Flats for rent in Kolkata",
+      "Flats for rent in Ahmedabad",
+      "Flats for rent in Thane",
+      "Flats for rent in Navi Mumbai",
+      "Flats for rent in Faridabad",
+      "Flats for rent in Ghaziabad",
+      "Flats for rent in Coimbatore",
+    ],
+  },
+  {
+    name: "PG’s",
+    propertyList: [
+      "PG's in Mumbai",
+      "PG's in Bangalore",
+      "PG's in Hyderabad",
+      "PG's in Pune",
+      "PG's in Chennai",
+      "PG's in Delhi",
+      "PG's in Gurgaon",
+      "PG's in Noida",
+      "PG's in Kolkata",
+      "PG's in Ahmedabad",
+      "PG's in Thane",
+      "PG's in Navi Mumbai",
+      "PG's in Faridabad",
+      "PG's in Ghaziabad",
+      "PG's in Coimbatore",
+    ],
+  },
+  {
+    name: "Property Management",
+    propertyList: [
+      "Properties in India",
+      "Agriculture Lands in India",
+      "Plots in India",
+      "Flats in India",
+    ],
+  },
+  {
+    name: "Popular",
+    propertyList: [
+      "Mumbai",
+      "Bangalore",
+      "Hyderabad",
+      "Pune",
+      "Chennai",
+      "Delhi",
+      "Gurgaon",
+      "Noida",
+      "Kolkata",
+      "Ahmedabad",
+      "Thane",
+      "Navi Mumbai",
+      "Faridabad",
+      "Ghaziabad",
+      "Coimbatore",
     ],
   },
 ];

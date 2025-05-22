@@ -9,7 +9,7 @@ const EditProfile = () => {
         <div className="profile-img-container">
           <img src={IMAGES.AVATAR_ICON} alt="profile-img" />
         </div>
-        <div className="input-fields-container">
+        <div className="input-fields-container-edit">
           <input value="Mahal" disabled/>
           <input value="mahaltejapilla08@gmail.com" disabled/>
         </div>
