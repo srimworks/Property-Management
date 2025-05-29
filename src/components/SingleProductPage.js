@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/SingleProductPage.css";
 import { IMAGES } from "../utils/images";
 import GoogleMap from "../reusable/GoogleMap";
 import { Link } from "react-router";
 import SuggestionCard from "../reusable/SuggestionCard";
+import CheckEmi from "../reusable/CheckEmi";
 
 const SingleProductPage = () => {
+  const [showEmi,setShowEmi]=useState(false)
+
   return (
     <div className="outlet-render">
       <div className="product-hero-section">
@@ -183,6 +186,20 @@ const SingleProductPage = () => {
             </p>
             <hr className="horizontal-line" />
             <button className="secondary-btn"> Share Property </button>
+          </div>
+        </div>
+        <div className="property-single-section">
+          <h3 className="furnishing-heading">Need Home Loan?</h3>
+          <hr className="horizontal-line" />
+          <div className="furnishing-icons-container emi">
+            <div className="furnishing-icon-container">
+              <p className="furnishing-heading"> 1.52 Lacs/Month</p>
+              <p className="icon-name">Estimated EMI</p>
+              {
+                showEmi && <CheckEmi close={setShowEmi}/>
+              }
+            </div>
+            <button className="secondary-btn" onClick={()=>setShowEmi(true)}>Check EMI</button>
           </div>
         </div>
         <div className="property-single-section">

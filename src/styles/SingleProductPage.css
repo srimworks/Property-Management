@@ -387,8 +387,14 @@ line-height: 1.3125rem; /* 113.514% */
   padding: 16px;
 }
 
+.furnishing-icons-container.emi{
+  gap: none;
+  justify-content: space-between;
+}
+
 .furnishing-icon-container{
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -469,4 +475,7 @@ line-height: 1.3125rem; /* 113.514% */
   .overview-item{
     width: 100%;
   }
+  .furnishing-icons-container.emi{
+  gap: 16px;
+}
 }
