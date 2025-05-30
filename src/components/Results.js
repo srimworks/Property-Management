@@ -3,7 +3,7 @@ import "../styles/Results.css";
 import SideFilters from "../reusable/SideFilters";
 import { FILTER_DATA } from "../utils/constant";
 import SearchResultsCard from "../reusable/SearchResultsCard";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { IMAGES } from "../utils/images.js";
 
 const Results = () => {

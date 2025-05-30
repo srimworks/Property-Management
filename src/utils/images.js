@@ -55,6 +55,7 @@ export const IMAGES = {
   PROPERTY_IMAGE_2:new URL('../images/common/PropertyImage2.png',import.meta.url).href,
   PROPERTY_IMAGE_3:new URL('../images/common/PropertyImage3.png',import.meta.url).href,
   PROPERTY_IMAGE:new URL('../images/common/PropertyImage.png',import.meta.url).href,
+  PROPERTY_PLACEHOLDER:new URL('../images/common/PropertyImage.png',import.meta.url).href,
 
 
   SMALL_LOGO_ICON:new URL('../images/PostProperty/SmallLogo.svg',import.meta.url).href,
