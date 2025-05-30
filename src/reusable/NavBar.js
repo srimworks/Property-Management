@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { IMAGES } from "../utils/images";
 import "../styles/NavBar.css";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LOCATION_DATA } from "../utils/constant";
 import LoginPage from "../components/SignIn/LoginPage";
+import { searchProperties } from "../api/propertyApi";
 
 const NavBar = () => {
   const location = useLocation().pathname;
+  const navigate = useNavigate();
   const [showSearchResults, setSearchResults] = useState(false);
   const [filtered_list, setFiltered_list] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [inputText, setInputText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-  const [mobiledropdown,setMobileDropdown]=useState(false)
+  const [mobiledropdown,setMobileDropdown]=useState(false);
+  const [searchQuery, setSearchQuery] = useState("")
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -34,6 +37,7 @@ const NavBar = () => {
   };
   const handleChange = (e) => {
     const value = e.target.value.toLowerCase();
+    setSearchQuery(value);
 
     if (value === "") {
       setFiltered_list(null);
@@ -41,6 +45,27 @@ const NavBar = () => {
       setFiltered_list(
         LOCATION_DATA.filter((item) => item.toLowerCase().includes(value))
       );
+  };
+  
+  const handleSearch = async (e) => {
+    if (e) e.preventDefault();
+    
+    const searchParams = {
+      query: searchQuery,
+      location: selectedCities.join(',')
+    };
+    
+    try {
+      const results = await searchProperties(searchParams);
+      
+      localStorage.setItem('searchResults', JSON.stringify(results));
+      localStorage.setItem('searchParams', JSON.stringify(searchParams));
+      
+      navigate('/search-results');
+      setSearchResults(false);
+    } catch (error) {
+      console.error('Error performing search:', error);
+    }
   };
 
   const handleSignin=()=>{
@@ -60,31 +85,37 @@ const NavBar = () => {
         </Link>
         {location !== "/" && !location.includes("/profile") && (
           <div className="nav-search-with-results">
-            <div className="nav-search-bar">
-              <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" />
-              {/* Selected Cities */}
-              <div className="selected-locations-nav">
-                {selectedCities.map((item, index) => (
-                  <div key={index} className="selected-location">
-                    {item}
-                    <img
-                      src={IMAGES.WHITE_CLOSE_ICON}
-                      onClick={() => handleRemoveCities(index)}
-                    />
-                  </div>
-                ))}
+            <form onSubmit={handleSearch} className="search-form">
+              <div className="nav-search-bar">
+                <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" />
+                {/* Selected Cities */}
+                <div className="selected-locations-nav">
+                  {selectedCities.map((item, index) => (
+                    <div key={index} className="selected-location">
+                      {item}
+                      <img
+                        src={IMAGES.WHITE_CLOSE_ICON}
+                        onClick={() => handleRemoveCities(index)}
+                      />
+                    </div>
+                  ))}
+                </div>
+                {/* Input Container */}
+                {selectedCities.length < 3 && (
+                  <input
+                    type="text"
+                    placeholder="Search properties, locations..."
+                    value={searchQuery}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                  />
+                )}
+                <button type="submit" className="search-button">
+                  Search
+                </button>
               </div>
-              {/* Input Container */}
-              {selectedCities.length < 3 && (
-                <input
-                  type="text"
-                  placeholder="Search up to 3 localities"
-                  onChange={handleChange}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-              )}
-            </div>
+            </form>
             {/* DropDownContaner */}
             {showSearchResults && (
               <div className="nav-search-results">

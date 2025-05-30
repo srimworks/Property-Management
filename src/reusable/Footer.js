@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IMAGES } from "../utils/images";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "../styles/Footer.css";
 import { FOOTER_LIST } from "../utils/constant";
 

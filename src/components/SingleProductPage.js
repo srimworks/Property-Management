@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/SingleProductPage.css";
 import { IMAGES } from "../utils/images";
 import GoogleMap from "../reusable/GoogleMap";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import SuggestionCard from "../reusable/SuggestionCard";
 import CheckEmi from "../reusable/CheckEmi";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { IMAGES } from "../utils/images";
 import "../styles/contact.css";
 import { COUNTRY_DATA } from "../utils/countryCodes";

@@ -1,21 +1,21 @@
-import React from 'react'
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import React from 'react';
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NavBar from './reusable/NavBar';
 import Home from './components/Home';
 import ProfileDashboardNav from './reusable/ProfileDashboardNav';
 
 import Results from './components/Results';
+import SearchResults from './components/SearchResults';
+import PropertyDetails from './components/PropertyDetails';
 import ProfileNav from './reusable/ProfileNav';
 import MyActivity from './components/ProfileDashboard/MyActivity';
 import MyTransactions from './components/ProfileDashboard/MyTransactions';
 import EditProfile from './components/ProfileDashboard/EditProfile';
 import ContactForm from './components/ContactForm';
 
-import Results from './components/Results'
 import SingleProductPage from './components/SingleProductPage';
 import PostProperty from './components/PostProperty';
 import Footer from './reusable/Footer';
-
 
 const AppRouter = () => {
   return (
@@ -54,8 +54,12 @@ export const Routes = createBrowserRouter([
         path: "/",
       },
       {
-        element: <Results/>,
+        element: <SearchResults/>,
         path: "/search-results",
+      },
+      {
+        element: <PropertyDetails/>,
+        path: "/property/:propertyId",
       },
       {
         element: <SingleProductPage/>,
@@ -102,10 +106,9 @@ export const Routes = createBrowserRouter([
 const App = () => {
   return (
     <div>
-        <AppRouter/>
-        <AppDashboard/>
+        <RouterProvider router={Routes} />
     </div>
   )
 }
 
-export default App
+export default App;
