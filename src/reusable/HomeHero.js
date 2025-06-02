@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IMAGES } from "../utils/images";
 import "../styles/Home.css";
 import { LOCATION_DATA, MAIN_SEARCH_BAR_DATA } from "../utils/constant";
+import { useNavigate } from "react-router";
 
 const HomeHero = () => {
   const [activeTab, setAcitveTab] = useState(0);
@@ -9,6 +10,7 @@ const HomeHero = () => {
   const [filtered_list, setFiltered_list] = useState(null);
   const [selectedCities, setSelectedCities] = useState([]);
   const [inputText, setInputText] = useState("");
+  const navigate=useNavigate()
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -109,8 +111,7 @@ const HomeHero = () => {
                 </div>
               )}
             </div>
-            <button className="search-btn">
-              {" "}
+            <button className="search-btn" onClick={()=>navigate("/search-results")}>
               <img src={IMAGES.SEARCH_ICON} alt="Search Icon" />
               Search
             </button>
@@ -127,7 +128,6 @@ const HomeHero = () => {
                     name={`filterOptions-${activeTab}`}
                   />
                   <label htmlFor={`option${index}`} className="radio-label">
-                    {" "}
                     {item}
                   </label>
                 </div>

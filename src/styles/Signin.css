@@ -45,6 +45,7 @@
   width: 503px;
   height: 550px;
   padding: 64px 50px;
+  box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -62,7 +63,7 @@
 
 .form {
   display: flex;
-  height: 235px;
+  height: auto;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
@@ -252,6 +253,12 @@
     }
 }
 
+.otp-input-feild{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
 @media (max-width:850px) {
   .signin-container{
     padding-inline: 24px;
