@@ -39,7 +39,8 @@ const SideFilters = ({ filter ,handleChange,selectedFilters}) => {
         <div className="single-filter-container">
           <label className="single-filter-label">{`${filter.label} : ₹${filter.min} to ₹${filter.max/100000}Lacs`}</label>
           <div className="filter-boxes-container">
-           <input type="range" min={filter.min} max={filter.max} value={filter.min} onChange={()=>{}} className="range-input"/>
+             {/* min={filter.min} max={filter.max} value={filter.min} onChange={()=>{}} */}
+           <input type="range" className="range-input"/>
           </div>
         </div>
       );

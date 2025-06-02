@@ -14,8 +14,9 @@ const NavBar = () => {
   const [selectedCities, setSelectedCities] = useState([]);
   const [inputText, setInputText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
-  const [mobiledropdown,setMobileDropdown]=useState(false);
-  const [searchQuery, setSearchQuery] = useState("")
+  const [mobiledropdown, setMobileDropdown] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -46,42 +47,41 @@ const NavBar = () => {
         LOCATION_DATA.filter((item) => item.toLowerCase().includes(value))
       );
   };
-  
+
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
-    
+
     const searchParams = {
       query: searchQuery,
-      location: selectedCities.join(',')
+      location: selectedCities.join(","),
     };
-    
+
     try {
       const results = await searchProperties(searchParams);
-      
-      localStorage.setItem('searchResults', JSON.stringify(results));
-      localStorage.setItem('searchParams', JSON.stringify(searchParams));
-      
-      navigate('/search-results');
+
+      localStorage.setItem("searchResults", JSON.stringify(results));
+      localStorage.setItem("searchParams", JSON.stringify(searchParams));
+
+      navigate("/search-results");
       setSearchResults(false);
     } catch (error) {
-      console.error('Error performing search:', error);
+      console.error("Error performing search:", error);
     }
   };
 
-  const handleSignin=()=>{
+  const handleSignin = () => {
     setShowLogin(true);
-    setMobileDropdown(false)
-  }
+    setMobileDropdown(false);
+  };
 
   return (
     <nav className={location === "/" ? "nav-home" : "nav"}>
-      
-        <div className="nav-left">
-          <Link to="/" className="link" onClick={()=>setMobileDropdown(false)}>
+      <div className="nav-left">
+        <Link to="/" className="link" onClick={() => setMobileDropdown(false)}>
           <div className="nav-logo">
             <img src={IMAGES.MAIN_LOGO} alt="main-logo" />
             <h1 className="logo-text">RealEstatePro</h1>
-        </div>
+          </div>
         </Link>
         {location !== "/" && !location.includes("/profile") && (
           <div className="nav-search-with-results">
@@ -135,37 +135,55 @@ const NavBar = () => {
             )}
           </div>
         )}
-        <span className="material-symbols-outline" onClick={()=>setMobileDropdown(!mobiledropdown)}>dehaze</span>
-        </div>
-      
-      <div className={mobiledropdown ?"nav-center-active" :"nav-center"}>
-        
+        <span
+          className="material-symbols-outline"
+          onClick={() => setMobileDropdown(!mobiledropdown)}
+        >
+          dehaze
+        </span>
+      </div>
 
+      <div className={mobiledropdown ? "nav-center-active" : "nav-center"}>
         <div className="nav-right">
           {!location.includes("/profile") && (
             <>
-              <Link to="/search-results" className={mobiledropdown ? "link-100":"link"}  onClick={()=>setMobileDropdown(false)}>
-                <h1 className="nav-right-text">Buy/Sell</h1>
+              <Link
+                to="/search-results"
+                className={mobiledropdown ? "link-100" : "link"}
+                onClick={() => setMobileDropdown(false)}
+              >
+                <h1 className="nav-right-text">Buy</h1>
               </Link>
               <h1 className="nav-right-text">Rent/Lease</h1>
               <h1 className="nav-right-text">Property Management</h1>
             </>
           )}
 
-          <Link to="/post-property" className={mobiledropdown ? "link-100":"link"}>
+          <Link
+            to="/post-property"
+            className={mobiledropdown ? "link-100" : "link"}
+          >
             <h1 className="nav-right-text">Post Property</h1>
           </Link>
-          <button className="primary-btn" onClick={handleSignin}>
-            Sign In
-          </button>
+          {userData?.fullName === undefined ? (
+            <button className="primary-btn" onClick={handleSignin}>
+              Sign In
+            </button>
+          ) : (
+            <Link to="/profile" className="link">
+              <span className="account-name">
+                <img src={IMAGES.ACCOUNT_CIRCLE_ICON} />
+                {userData?.fullName}
+              </span>
+            </Link>
+          )}
         </div>
-        
       </div>
       {showLogin && (
-          <div className="login-container">
-            <LoginPage setShowLogin={setShowLogin} />
-          </div>
-        )}
+        <div className="login-container">
+          <LoginPage setShowLogin={setShowLogin} />
+        </div>
+      )}
     </nav>
   );
 };

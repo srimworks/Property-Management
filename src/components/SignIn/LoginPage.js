@@ -3,10 +3,21 @@ import { IMAGES } from "../../utils/images";
 import { COUNTRY_DATA } from "../../utils/countryCodes";
 import { Link } from "react-router-dom";
 import "../../styles/Signin.css";
-import { setupRecaptcha, sendOTP, verifyOTP, getTestOTP } from "../../firebase/auth";
+import {
+  setupRecaptcha,
+  sendOTP,
+  verifyOTP,
+  getTestOTP,
+} from "../../firebase/auth";
 import API_BASE_URL from "../../config/api";
 
-const Number = ({ setFlowValue, formData, setFormData, setConfirmationResult, setTestOtp }) => {
+const Number = ({
+  setFlowValue,
+  formData,
+  setFormData,
+  setConfirmationResult,
+  setTestOtp,
+}) => {
   const [countryEmoji, setCountryEmoji] = useState("🇮🇳");
   const [countryCode, setcountryCode] = useState("+91");
   const [loading, setLoading] = useState(false);
@@ -34,26 +45,23 @@ const Number = ({ setFlowValue, formData, setFormData, setConfirmationResult, se
     setError("");
 
     try {
-      const recaptchaVerifier = setupRecaptcha('recaptcha-container');
+      const recaptchaVerifier = setupRecaptcha("recaptcha-container");
       if (!recaptchaVerifier) {
         throw new Error("Failed to set up verification");
       }
-      
-      const sendOtpResult = await sendOTP(
-        formData.mobile, 
-        recaptchaVerifier
-      );
-      
+
+      const sendOtpResult = await sendOTP(formData.mobile, recaptchaVerifier);
+
       if (!sendOtpResult.success) {
         throw new Error(sendOtpResult.error || "Failed to send OTP");
       }
-      
+
       setConfirmationResult(sendOtpResult.confirmationResult);
-      
+
       if (sendOtpResult.testOtp) {
         setTestOtp(sendOtpResult.testOtp);
       }
-      
+
       setFlowValue((prev) => ++prev);
     } catch (error) {
       console.error("Error sending OTP:", error);
@@ -106,13 +114,13 @@ const Number = ({ setFlowValue, formData, setFormData, setConfirmationResult, se
 
       {error && <p className="error-message">{error}</p>}
       <p>We'll send OTP for verification</p>
-      
+
       {/* Invisible reCAPTCHA container */}
       <div id="recaptcha-container" ref={recaptchaContainerRef}></div>
-      
-      <button 
-        type="submit" 
-        onClick={handelSubmit} 
+
+      <button
+        type="submit"
+        onClick={handelSubmit}
         className="primary-btn-100"
         disabled={loading}
       >
@@ -122,7 +130,14 @@ const Number = ({ setFlowValue, formData, setFormData, setConfirmationResult, se
   );
 };
 
-const OTP = ({ formData, setFlowValue, confirmationResult, setUserData, testOtp, setTestOtp }) => {
+const OTP = ({
+  formData,
+  setFlowValue,
+  confirmationResult,
+  setUserData,
+  testOtp,
+  setTestOtp,
+}) => {
   const [otp, setOtp] = useState("");
   const [timeLeft, setTimeLeft] = useState(60);
   const [canResend, setCanResend] = useState(false);
@@ -131,7 +146,6 @@ const OTP = ({ formData, setFlowValue, confirmationResult, setUserData, testOtp,
   const timerRef = useRef(null);
 
   useEffect(() => {
-
     if (timeLeft > 0 && !canResend) {
       timerRef.current = setTimeout(() => {
         setTimeLeft(timeLeft - 1);
@@ -157,26 +171,23 @@ const OTP = ({ formData, setFlowValue, confirmationResult, setUserData, testOtp,
     setCanResend(false);
 
     try {
-      const recaptchaVerifier = setupRecaptcha('recaptcha-container');
+      const recaptchaVerifier = setupRecaptcha("recaptcha-container");
       if (!recaptchaVerifier) {
         throw new Error("Failed to set up verification");
       }
-      
-      const sendOtpResult = await sendOTP(
-        formData.mobile, 
-        recaptchaVerifier
-      );
-      
+
+      const sendOtpResult = await sendOTP(formData.mobile, recaptchaVerifier);
+
       if (!sendOtpResult.success) {
         throw new Error(sendOtpResult.error || "Failed to resend OTP");
       }
-      
+
       setConfirmationResult(sendOtpResult.confirmationResult);
-      
+
       if (sendOtpResult.testOtp) {
         setTestOtp(sendOtpResult.testOtp);
       }
-      
+
       setTimeLeft(60);
     } catch (error) {
       console.error("Error resending OTP:", error);
@@ -202,42 +213,46 @@ const OTP = ({ formData, setFlowValue, confirmationResult, setUserData, testOtp,
       if (!confirmationResult) {
         throw new Error("Verification session expired. Please resend OTP.");
       }
-      
+
       // Show loading state
       setLoading(true);
-      
+
       // Verify the OTP
       const verifyResult = await verifyOTP(confirmationResult, otpValue);
-      
+
       if (!verifyResult.success) {
-        throw new Error(verifyResult.error || "Failed to verify OTP. Please try again.");
+        throw new Error(
+          verifyResult.error || "Failed to verify OTP. Please try again."
+        );
       }
-      
+
       // Skip API call to backend for now and proceed directly to profile completion or login
-      console.log("Firebase verification successful, proceeding without backend API call");
-      
+      console.log(
+        "Firebase verification successful, proceeding without backend API call"
+      );
+
       // Check if user already exists in localStorage
-      const existingUser = localStorage.getItem('user');
-      
+      const existingUser = localStorage.getItem("user");
+
       if (existingUser) {
         // User already exists in localStorage, update their data
         const parsedUser = JSON.parse(existingUser);
-        
+
         // Update mobile number if it's different
         if (parsedUser.mobile !== formData.mobile) {
           parsedUser.mobile = formData.mobile;
-          localStorage.setItem('user', JSON.stringify(parsedUser));
+          localStorage.setItem("user", JSON.stringify(parsedUser));
         }
-        
+
         // Redirect to home page or dashboard
-        window.location.href = '/';
+        window.location.href = "/";
       } else {
         // New user - proceed to profile completion
         setUserData({
           mobile: formData.mobile,
           firebaseUid: verifyResult.uid,
           phoneNumber: verifyResult.phoneNumber,
-          email: ''
+          email: "",
         });
         setFlowValue(2); // Go to profile completion
       }
@@ -255,79 +270,83 @@ const OTP = ({ formData, setFlowValue, confirmationResult, setUserData, testOtp,
         <input value={`${formData.country} ${formData.mobile}`} disabled />
         <img src={IMAGES.EDIT_ICON} alt="Edit Icon" onClick={handleEdit} />
       </div>
-      <h2 className="enter-otp">Enter OTP Here</h2>
-      
-      {testOtp && (
-        <div className="test-otp-notice" style={{
-          margin: '0 0 20px',
-          padding: '12px 16px',
-          backgroundColor: '#f0f9ff',
-          borderRadius: '8px',
-          border: '1px solid #bae0ff',
-          fontSize: '14px',
-          color: '#0066cc',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          <span style={{fontWeight: 500}}>🔒 Test Mode Active</span>
-          <span style={{margin: '0 4px'}}>•</span>
-          <span>Use OTP: </span>
-          <span style={{
-            fontWeight: 'bold',
-            backgroundColor: '#e6f4ff',
-            padding: '2px 8px',
-            borderRadius: '4px',
-            letterSpacing: '1px',
-            fontFamily: 'monospace',
-            color: '#0052d9'
-          }}>
-            {testOtp}
-          </span>
+      <div className="otp-input-feild">
+        <div className="form-group">
+          <label className="enter-otp">
+            Enter OTP Here
+          </label>
+          <input
+            id="input-otp"
+            type="text"
+            className="otp-input"
+            placeholder="Enter 6-digit OTP"
+            value={otp}
+            onChange={handleOtpChange}
+            maxLength="6"
+            inputMode="numeric"
+            pattern="\d*"
+            style={{
+              width: "100%",
+              padding: "12px 16px",
+              borderRadius: "8px",
+              border: "1px solid #d9d9d9",
+              fontSize: "16px",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#1890ff")}
+            onBlur={(e) => (e.target.style.borderColor = "#d9d9d9")}
+          />
         </div>
-      )}
-      
-      <div className="form-group" style={{marginBottom: '8px'}}>
-        <label style={{display: 'block', marginBottom: '8px', fontSize: '14px', color: '#333'}}>
-          Enter 6-digit verification code
-        </label>
-        <input
-          id="input-otp"
-          type="text"
-          className="otp-input"
-          placeholder="Enter 6-digit OTP"
-          value={otp}
-          onChange={handleOtpChange}
-          maxLength="6"
-          inputMode="numeric"
-          pattern="\d*"
-          style={{
-            width: '100%',
-            padding: '12px 16px',
-            borderRadius: '8px',
-            border: '1px solid #d9d9d9',
-            fontSize: '16px',
-            outline: 'none',
-            transition: 'border-color 0.3s',
-          }}
-          onFocus={(e) => e.target.style.borderColor = '#1890ff'}
-          onBlur={(e) => e.target.style.borderColor = '#d9d9d9'}
-        />
+
+        {error && <p className="error-message">{error}</p>}
+        <div style={{display: "flex",gap:"4px"}}>
+          {testOtp && (
+            <div
+              className="test-otp-notice"
+              style={{
+                padding: "12px 16px",
+                backgroundColor: "#f0f9ff",
+                borderRadius: "8px",
+                border: "1px solid #bae0ff",
+                fontSize: "14px",
+                color: "#0066cc",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                width:"100%",
+              }}
+            >
+              <span style={{ fontWeight: 500 }}>🔒 Test Mode Active</span>
+              <span>•</span>
+              <span>Use OTP: </span>
+              <span
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#e6f4ff",
+                  padding: "2px 8px",
+                  borderRadius: "4px",
+                  letterSpacing: "1px",
+                  fontFamily: "monospace",
+                  color: "#0052d9",
+                }}
+              >
+                {testOtp}
+              </span>
+            </div>
+          )}
+
+          {canResend ? (
+            <p className="resend-otp" onClick={handleResendOtp}>
+              {loading ? "Resending..." : "Resend OTP"}
+            </p>
+          ) : (
+            <p className="resend-otp-timer">Resend OTP in {timeLeft}s</p>
+          )}
+        </div>
+        {/* Invisible reCAPTCHA container for resend */}
+        <div id="recaptcha-container"></div>
       </div>
-      
-      {error && <p className="error-message">{error}</p>}
-      
-      {canResend ? (
-        <p className="resend-otp" onClick={handleResendOtp}>
-          {loading ? "Resending..." : "Resend OTP"}
-        </p>
-      ) : (
-        <p className="resend-otp-timer">Resend OTP in {timeLeft}s</p>
-      )}
-      
-      {/* Invisible reCAPTCHA container for resend */}
-      <div id="recaptcha-container"></div>
-      
       <button
         type="submit"
         className="primary-btn-100"
@@ -375,38 +394,41 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
     setError("");
 
     try {
-      console.log('Creating user profile locally without API calls');
-      
+      console.log("Creating user profile locally without API calls");
+
       // Create a user object with the provided information
       const user = {
         id: Date.now().toString(), // Generate a temporary ID
         fullName: name,
         email: email || null,
         mobile: formData.mobile,
-        firebaseUid: userData?.firebaseUid || 'temp-firebase-uid',
+        firebaseUid: userData?.firebaseUid || "temp-firebase-uid",
         phoneNumber: userData?.phoneNumber || formData.mobile,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       };
-      
+
       // Store the user in localStorage
-      localStorage.setItem('user', JSON.stringify(user));
-      
+      localStorage.setItem("user", JSON.stringify(user));
+
       // Create a mock token
-      const mockToken = 'firebase-auth-token-' + Math.random().toString(36).substring(2);
-      localStorage.setItem('token', mockToken);
-      
-      console.log('User profile created successfully:', user);
-      
+      const mockToken =
+        "firebase-auth-token-" + Math.random().toString(36).substring(2);
+      localStorage.setItem("token", mockToken);
+
+      console.log("User profile created successfully:", user);
+
       // Close the login modal if it exists
       if (setShowLogin) {
         setShowLogin(false);
       }
-      
+
       // Redirect to profile page
-      window.location.href = '/profile';
+      window.location.href = "/";
     } catch (error) {
       console.error("Error completing registration:", error);
-      setError(error.message || "Failed to complete registration. Please try again.");
+      setError(
+        error.message || "Failed to complete registration. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -432,9 +454,9 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
         placeholder="Enter Email"
         required
       />
-      
+
       {error && <p className="error-message">{error}</p>}
-      
+
       <button
         type="submit"
         className="primary-btn-100"
@@ -447,7 +469,7 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
   );
 };
 
-const LoginPage = ({setShowLogin}) => {
+const LoginPage = ({ setShowLogin }) => {
   const [flowValue, setFlowValue] = useState(0);
   const [formData, setFormData] = useState({ mobile: "", country: "+91" });
   const [confirmationResult, setConfirmationResult] = useState(null);
@@ -474,24 +496,23 @@ const LoginPage = ({setShowLogin}) => {
       </div>
 
       <div className="signin-right-container">
-        {/* Invisible reCAPTCHA container */}
-        <div id="recaptcha-container"></div>
-        
         <form className="form" onSubmit={(e) => e.preventDefault()}>
           <div className="close-icon-container">
-            <img 
-              src={IMAGES.CLOSE_ICON} 
-              onClick={() => setShowLogin(false)} 
+            <img
+              src={IMAGES.CLOSE_ICON}
+              onClick={() => setShowLogin(false)}
               alt="Close Icon"
             />
           </div>
-          
+
           <h1>
-            {flowValue === 0 ? "Enter phone to continue" : 
-             flowValue === 1 ? "Verify OTP" : 
-             "Complete your profile"}
+            {flowValue === 0
+              ? "Enter phone to continue"
+              : flowValue === 1
+              ? "Verify OTP"
+              : "Complete your profile"}
           </h1>
-          
+
           {flowValue === 0 && (
             <Number
               setFlowValue={setFlowValue}
@@ -522,6 +543,8 @@ const LoginPage = ({setShowLogin}) => {
         </form>
 
         <p>By continuing, you agree to our Terms & Conditions</p>
+        {/* Invisible reCAPTCHA container */}
+        <div id="recaptcha-container"></div>
       </div>
     </div>
   );
@@ -551,8 +574,8 @@ const styles = `
   }
 `;
 
-if (typeof document !== 'undefined') {
-  const styleElement = document.createElement('style');
+if (typeof document !== "undefined") {
+  const styleElement = document.createElement("style");
   styleElement.textContent = styles;
   document.head.appendChild(styleElement);
 }

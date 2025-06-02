@@ -2,7 +2,7 @@
   "name": "property-management",
   "version": "1.0.0",
   "description": "Property Management Application",
-  "source": "src/index.html",
+  "source": "/public/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
