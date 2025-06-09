@@ -78,12 +78,21 @@
   width: 100%;
   height: 360px;
   gap: 16px;
+  cursor: pointer;
 }
 .image-1 {
   max-width: 900px;
   width: 100%;
   height: 100%;
   background-color: #606060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  & img{
+    width: 100%;
+    height: auto;
+  }
 }
 
 .images-container {
@@ -99,11 +108,40 @@
   width: 100%;
   height: 50%;
   background-color: #606060;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+   & img{
+    width: 100%;
+    height: auto;
+  }
 }
 .image-3 {
   width: 100%;
   height: 50%;
   background-color: #606060;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+   & img{
+    width: 100%;
+    height: auto;
+  }
+}
+.image-3-popup{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #00000095;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Open Sans;
+  font-size: 20px;
 }
 
 .property-highlights {
@@ -416,12 +454,27 @@ line-height: 1.3125rem; /* 113.514% */
   width: 100%;
   gap: 8px;
   overflow-x: scroll;
+  cursor: pointer;
 
   &::-webkit-scrollbar{
     display: none;
   }
 }
-
+.property-image-div{
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+.image-wide{
+  height: 100%;
+  width: auto;
+}
+.image-normal{
+  height: auto;
+  width: 100%;
+}
 
 @media (max-width:700px) {
   .product-image-container{

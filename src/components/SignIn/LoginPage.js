@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IMAGES } from "../../utils/images";
 import { COUNTRY_DATA } from "../../utils/countryCodes";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/Signin.css";
 import {
   setupRecaptcha,
@@ -272,9 +272,7 @@ const OTP = ({
       </div>
       <div className="otp-input-feild">
         <div className="form-group">
-          <label className="enter-otp">
-            Enter OTP Here
-          </label>
+          <label className="enter-otp">Enter OTP Here</label>
           <input
             id="input-otp"
             type="text"
@@ -300,7 +298,7 @@ const OTP = ({
         </div>
 
         {error && <p className="error-message">{error}</p>}
-        <div style={{display: "flex",gap:"4px"}}>
+        <div style={{ display: "flex", gap: "4px" }}>
           {testOtp && (
             <div
               className="test-otp-notice"
@@ -314,7 +312,7 @@ const OTP = ({
                 display: "flex",
                 alignItems: "center",
                 gap: "4px",
-                width:"100%",
+                width: "100%",
               }}
             >
               <span style={{ fontWeight: 500 }}>🔒 Test Mode Active</span>
@@ -364,6 +362,7 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   // Email validation function
   const validateEmail = (email) => {
@@ -420,10 +419,10 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
       // Close the login modal if it exists
       if (setShowLogin) {
         setShowLogin(false);
+        navigate(-1);
       }
 
       // Redirect to profile page
-      window.location.href = "/";
     } catch (error) {
       console.error("Error completing registration:", error);
       setError(
@@ -475,6 +474,19 @@ const LoginPage = ({ setShowLogin }) => {
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [userData, setUserData] = useState(null);
   const [testOtp, setTestOtp] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate()
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+    console.log(location.pathname.includes("post-property"))
+    if(location.pathname.includes("post-property")){
+      navigate(-2);
+    }
+    else{
+      navigate(-1)
+    }
+    
+  };
 
   return (
     <div className="signin-container">
@@ -500,7 +512,7 @@ const LoginPage = ({ setShowLogin }) => {
           <div className="close-icon-container">
             <img
               src={IMAGES.CLOSE_ICON}
-              onClick={() => setShowLogin(false)}
+              onClick={handleCloseLogin}
               alt="Close Icon"
             />
           </div>

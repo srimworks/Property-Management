@@ -1,13 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/SingleProductPage.css";
 import { IMAGES } from "../utils/images";
 import GoogleMap from "../reusable/GoogleMap";
 import { Link } from "react-router-dom";
 import SuggestionCard from "../reusable/SuggestionCard";
 import CheckEmi from "../reusable/CheckEmi";
-
+import ContactDetails from "../reusable/contactDetails";
+import ImagesPopup from "../reusable/ImagesPopup";
+const IMAGES_PROPERTY = [
+  IMAGES.PROPERTY_IMAGE_1,
+  IMAGES.PROPERTY_IMAGE_2,
+  IMAGES.PROPERTY_IMAGE_3,
+  IMAGES.PROPERTY_IMAGE_4,
+];
 const SingleProductPage = () => {
-  const [showEmi,setShowEmi]=useState(false)
+  const [showEmi, setShowEmi] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const [classes, setClasses] = useState(Array(IMAGES_PROPERTY.length).fill(""));
+  const [showImagePopup,setShowImagePopup]=useState(false)
+  const handleShowEmi = () => {
+    if (localStorage.getItem("user")) {
+      setShowEmi(true);
+    } else {
+      window.location.hash = "login";
+    }
+  };
+
+  const handleShowContact = () => {
+    if (localStorage.getItem("user")) {
+      setShowContact(true);
+    } else {
+      window.location.hash = "login";
+    }
+  };
+  const handelImageLoad = (e, index) => {
+    const { naturalWidth, naturalHeight } = e.target;
+    let className = "";
+    if (naturalWidth > naturalHeight) {
+      className = "wide";
+    } else className = "normal";
+
+    setClasses((prev) => {
+      const updated = [...prev];
+      updated[index] = className;
+      return updated;
+    });
+  };
 
   return (
     <div className="outlet-render">
@@ -30,16 +68,26 @@ const SingleProductPage = () => {
           <div className="price-info">
             <h4 className="price-info-heading">₹ 25,000</h4>
             <p className="breadcrumbs">added 5 days ago</p>
-            <button className="primary-btn">Contact</button>
+            <button className="primary-btn" onClick={handleShowContact}>
+              Contact
+            </button>
           </div>
         </div>
-        <div className="product-image-container">
-          <div className="image-1"></div>
+        <div className="product-image-container" onClick={()=>setShowImagePopup(true)}>
+          <div className="image-1">
+            <img src={IMAGES_PROPERTY[0]} />
+          </div>
           <div className="images-container">
-            <div className="image-2"></div>
-            <div className="image-3"></div>
+            <div className="image-2">
+              <img src={IMAGES_PROPERTY[1]} />
+            </div>
+            <div className="image-3">
+              <img src={IMAGES_PROPERTY[2]} />
+              <p className="image-3-popup">{`+ ${IMAGES_PROPERTY.length-2}`}</p>
+            </div>
           </div>
         </div>
+        {showImagePopup && <ImagesPopup images={IMAGES_PROPERTY} close={()=>{setShowImagePopup(false)}} />}
       </div>
       <div className="property-highlights">
         <div className="property-single-section">
@@ -195,11 +243,11 @@ const SingleProductPage = () => {
             <div className="furnishing-icon-container">
               <p className="furnishing-heading"> 1.52 Lacs/Month</p>
               <p className="icon-name">Estimated EMI</p>
-              {
-                showEmi && <CheckEmi close={setShowEmi}/>
-              }
+              {showEmi && <CheckEmi close={setShowEmi} />}
             </div>
-            <button className="secondary-btn" onClick={()=>setShowEmi(true)}>Check EMI</button>
+            <button className="secondary-btn" onClick={handleShowEmi}>
+              Check EMI
+            </button>
           </div>
         </div>
         <div className="property-single-section">
@@ -237,13 +285,17 @@ const SingleProductPage = () => {
             Tour this Property: Images & Videos
           </h3>
           <hr className="horizontal-line" />
-          <div className="property-images-container">
-            <img src={IMAGES.PROPERTY_IMAGE_1} className="Property Image" />
-            <img src={IMAGES.PROPERTY_IMAGE_2} className="Property Image" />
-            <img src={IMAGES.PROPERTY_IMAGE_3} className="Property Image" />
-            <img src={IMAGES.PROPERTY_IMAGE_1} className="Property Image" />
-            <img src={IMAGES.PROPERTY_IMAGE_2} className="Property Image" />
-            <img src={IMAGES.PROPERTY_IMAGE_3} className="Property Image" />
+          <div className="property-images-container" onClick={()=>setShowImagePopup(true)}>
+            {IMAGES_PROPERTY.map((item, index) => (
+              <div className="property-image-div" key={index}>
+                <img
+                  src={item}
+                  alt="Property Image"
+                  className={`image-${classes[index]}`}
+                  onLoad={(e) => handelImageLoad(e, index)}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="property-single-section">
@@ -259,12 +311,13 @@ const SingleProductPage = () => {
           <h3 className="furnishing-heading">Flats Near Madhapur</h3>
           <hr className="horizontal-line" />
           <div className="property-images-container">
-            <SuggestionCard/>
-            <SuggestionCard/>
-            <SuggestionCard/>
+            <SuggestionCard />
+            <SuggestionCard />
+            <SuggestionCard />
           </div>
         </div>
       </div>
+      {showContact && <ContactDetails close={setShowContact} />}
     </div>
   );
 };

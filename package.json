@@ -8,16 +8,22 @@
     "build": "parcel build",
     "clean": "rm -rf .parcel-cache dist"
   },
-  "keywords": ["property", "management", "react"],
+  "keywords": [
+    "property",
+    "management",
+    "react"
+  ],
   "author": "",
   "license": "ISC",
   "browserslist": "defaults",
   "dependencies": {
+    "@babel/runtime": "^7.27.4",
+    "firebase": "^10.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
-    "firebase": "^10.11.1"
+    "react-slider": "^2.0.6"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.14.4",

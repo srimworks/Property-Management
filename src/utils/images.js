@@ -51,10 +51,10 @@ export const IMAGES = {
   EDIT_ICON:new URL('../images/common/Edit.svg',import.meta.url).href,
   PROPERTY_LOCATION:new URL('../images/common/PropertyLocation.svg',import.meta.url).href,
 
-  PROPERTY_IMAGE_1:new URL('../images/common/PropertyImage1.png',import.meta.url).href,
-  PROPERTY_IMAGE_2:new URL('../images/common/PropertyImage2.png',import.meta.url).href,
-  PROPERTY_IMAGE_3:new URL('../images/common/PropertyImage3.png',import.meta.url).href,
-  PROPERTY_IMAGE:new URL('../images/common/PropertyImage.png',import.meta.url).href,
+  PROPERTY_IMAGE_1:new URL('../images/common/PropertyImage.png',import.meta.url).href,
+  PROPERTY_IMAGE_2:new URL('../images/common/PropertyImage2.jpg',import.meta.url).href,
+  PROPERTY_IMAGE_3:new URL('../images/common/PropertyImage3.jpg',import.meta.url).href,
+  PROPERTY_IMAGE_4:new URL('../images/common/PropertyImage4.jpg',import.meta.url).href,
   PROPERTY_PLACEHOLDER:new URL('../images/common/PropertyImage.png',import.meta.url).href,
 
 
