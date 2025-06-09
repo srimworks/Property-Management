@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-router-dom";
 import NavBar from './reusable/NavBar';
 import Home from './components/Home';
 import ProfileDashboardNav from './reusable/ProfileDashboardNav';
@@ -18,9 +18,11 @@ import PostProperty from './components/PostProperty';
 import Footer from './reusable/Footer';
 
 const AppRouter = () => {
+
+
   return (
     <>
-       <NavBar/>
+       <NavBar />
       <Outlet />
       <Footer/>
     </>

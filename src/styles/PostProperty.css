@@ -107,6 +107,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-wrap: nowrap;
 }
 .middle-input-conatiner {
   display: flex;
@@ -151,7 +152,7 @@
 .input-fields-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
   padding: 16px;
   padding-left: 62px;
 }
@@ -268,11 +269,10 @@
 }
 
 .check-option-container {
-  display: flex;
-  width: 75%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 32px;
+  display: grid;
+  width: 100%;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px; /* Controls spacing between items */
 }
 
 .text-container {

@@ -12,9 +12,17 @@ const HomeHero = () => {
   const [inputText, setInputText] = useState("");
   const navigate=useNavigate()
 
+
   const handleSelectedCitites = (item) => {
+    if (!checkItemExisits(item)){
     setSelectedCities([...selectedCities, item]);
+    setInputText("");
+    setFiltered_list(null)
+  }
   };
+  const checkItemExisits=(value)=>{
+    return selectedCities.some(item=>item===value)
+  }
 
   const handleRemoveCities = (indexOf) => {
     setSelectedCities((prev) =>
@@ -25,12 +33,13 @@ const HomeHero = () => {
   const handleBlur = () => {
     setTimeout(() => {
       setSearchResults(false);
-    }, 500);
+    }, 300);
   };
   const handleFocus = () => {
     setSearchResults(true);
   };
   const handleChange = (e) => {
+    setInputText(e.target.value)
     const value = e.target.value.toLowerCase();
 
     if (value === "") {
@@ -40,6 +49,17 @@ const HomeHero = () => {
         LOCATION_DATA.filter((item) => item.toLowerCase().includes(value))
       );
   };
+
+  const handleSearch=()=>{
+    if(selectedCities.length!==0){
+      navigate("/search-results",{
+        state:{
+          selectedCities:selectedCities,
+          searchQuery:inputText,
+        }
+      })
+    }
+  }
 
   return (
     <div className="hero-outlet">
@@ -86,6 +106,7 @@ const HomeHero = () => {
                 {selectedCities.length < 3 && (
                   <input
                     type="text"
+                    value={inputText}
                     placeholder="Search up to 3 localities"
                     onChange={handleChange}
                     onFocus={handleFocus}
@@ -96,7 +117,7 @@ const HomeHero = () => {
               {/* DropDownContaner */}
               {showSearchResults && (
                 <div className="search-results">
-                  {filtered_list !== null &&
+                  {filtered_list !== null ?
                     filtered_list.map((item, index) => (
                       <li
                         key={index}
@@ -107,11 +128,11 @@ const HomeHero = () => {
                       >
                         {item}
                       </li>
-                    ))}
+                    )) : <li className="result-item">Start Typing...</li>}
                 </div>
               )}
             </div>
-            <button className="search-btn" onClick={()=>navigate("/search-results")}>
+            <button className="search-btn" onClick={handleSearch}>
               <img src={IMAGES.SEARCH_ICON} alt="Search Icon" />
               Search
             </button>

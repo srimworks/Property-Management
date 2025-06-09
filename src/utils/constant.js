@@ -200,45 +200,73 @@ export const FILTER_DATA = [
     id: "bhkType",
     label: "BHK Type",
     type: "checkbox",
-    options: ["1 RK", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4+ BHK"],
+    options: [
+      { id: "1-rk", value: "1 RK" },
+      { id: "1-bhk", value: "1 BHK" },
+      { id: "2-bhk", value: "2 BHK" },
+      { id: "3-bhk", value: "3 BHK" },
+      { id: "4-bhk", value: "4 BHK" },
+      { id: "4+-bhk", value: "4+ BHK" },
+    ],
   },
   {
     id: "range",
     label: "Rent Range",
     type: "range",
-    min: "0",
-    max: "500000",
-    step: "500",
+    min: 0,
+    max: 80000000,
+    step: 1000,
   },
   {
     id: "availability",
     label: "Availability",
     type: "radio",
-    options: ["Immediate", "Within 15 Days", "Within 30 Days", "After 30 Days"],
+    options: [
+      { id: "0", value: "Immediate" },
+      { id: "<15", value: "Within 15 Days" },
+      { id: "<30", value: "Within 30 Days" },
+      { id: ">30", value: "After 30 Days" },
+    ],
   },
   {
     id: "preferredTenants",
     label: "Preferred Tenants",
     type: "checkbox",
-    options: ["Family", "Company", "Bachelor Male", "Bachelor Female"],
+    options: [
+      { id: "family", value: "Family" },
+      { id: "company", value: "Company" },
+      { id: "bachelor-male", value: "Bachelor Male" },
+      { id: "bachelor-female", value: "Bachelor Female" },
+    ],
   },
   {
     id: "preferredType",
     label: "Preferred Type",
     type: "checkbox",
-    options: ["Apartment", "Independent House/Villa", "Gated Community villa"],
+    options: [
+      { id: "apartement", value: "Apartment" },
+      { id: "independent-house/villa", value: "Independent House/Villa" },
+      { id: "gated-community-villa", value: "Gated Community villa" },
+    ],
   },
   {
     id: "furnishing",
     label: "Furnishing",
     type: "checkbox",
-    options: ["Full", "Semi", "None"],
+    options: [
+      { id: "full", value: "Full" },
+      { id: "semi", value: "Semi" },
+      { id: "none", value: "None" },
+    ],
   },
   {
     id: "parking",
     label: "Parking",
     type: "checkbox",
-    options: ["2 Wheeler", "4 Wheeler", "Show Only Lease Properties"],
+    options: [
+      { id: "2", value: "2 Wheeler" },
+      { id: "4", value: "4 Wheeler" },
+    ],
   },
 ];
 
@@ -588,8 +616,15 @@ export const PRODUCT_ADD_DATA = [
         type: "radio",
         id: "propertyAvailableFor",
         label: "Property available for",
-        required: false,
-        options: ["Only rent", "Only lease"],
+        required: true,
+        options: ["Sell","Rent", "Lease","Manage"],
+      },
+      {
+        type: "radio",
+        id: "propertytype",
+        label: "Property Type",
+        required: true,
+        options: ["Commercial","Non-Commercial"],
       },
       {
         type: "input",
@@ -919,3 +954,14 @@ export const FOOTER_LIST = [
     ],
   },
 ];
+
+
+export const formatToIndianNumber=(num)=> {
+  if (num >= 10000000) {
+    return (num / 10000000) + ' Cr';
+  } else if (num >= 100000) {
+    return (num / 100000) + ' Lakh';
+  } else {
+    return num.toString();
+  }
+}
