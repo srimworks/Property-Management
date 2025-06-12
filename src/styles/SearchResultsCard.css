@@ -148,8 +148,8 @@
   overflow: hidden;
   color: var(--Colors-Neutral-700, #777);
   text-overflow: ellipsis;
-  font-family: "Public Sans";
-  font-size: 16px;
+  font-family: "Open Sans";
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

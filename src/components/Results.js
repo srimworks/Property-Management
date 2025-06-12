@@ -17,10 +17,18 @@ const Results = () => {
   const handleShowFilter = () => {
     setShowFilters(!showFilters);
   };
-  const handleChange = (id, value) => {
+  const handleChange = (id, value,type) => {
+    if (type==="radio"){
+      setSelectedFilters({...selectedFilters,[id]:value})
+      return
+    } 
+    if (type==="range"){
+      setSelectedFilters({...selectedFilters ,[id]:value})
+      return
+    }
     if (selectedFilters[id] && selectedFilters[id].includes(value)) {
       const updatedFilters = {
-        ...selectedFilters,
+        ...selectedFilters, 
         [id]: [...selectedFilters[id].filter((item) => item !== value)],
       };
 
@@ -37,12 +45,13 @@ const Results = () => {
       setSelectedFilters(updatedFilters);
       console.log(updatedFilters);
     } else {
+      // console.log(id)
       const updatedFilters = {
         ...selectedFilters,
         [id]: [value],
       };
       setSelectedFilters(updatedFilters);
-      console.log(updatedFilters);
+      console.log(updatedFilters)
     }
   };
   console.log(selectedFilters);
@@ -86,11 +95,9 @@ const Results = () => {
         >
           Filters
         </button>
-        <Link to="/single-product-page" className="link-100" id="gap">
           <SearchResultsCard />
           <SearchResultsCard />
           <SearchResultsCard />
-        </Link>
       </div>
     </div>
   );

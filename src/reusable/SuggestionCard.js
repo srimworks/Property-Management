@@ -5,7 +5,7 @@ import { IMAGES } from '../utils/images'
 const SuggestionCard = () => {
   return (
     <div className='suggestion-card'>
-        <img src={IMAGES.PROPERTY_IMAGE} alt='Property Image'/>
+        <img src={IMAGES.PROPERTY_IMAGE_1} alt='Property Image'/>
         <div className='suggestion-card-bottom'>
             <h2 className='suggestion-price'>₹ 3,500/mo</h2>
             <p className='suggestion-title'>1, 2, 3 BHK Apartments</p>

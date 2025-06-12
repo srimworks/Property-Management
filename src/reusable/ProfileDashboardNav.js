@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IMAGES } from "../utils/images.js";
 import { Link, Outlet } from "react-router-dom";
 import "../styles/Dashboard.css";
@@ -9,6 +9,7 @@ const ProfileDashboardNav = () => {
   const [hamburgerActive, setHambuger] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const location=useLocation()
   
   useEffect(() => {
     
@@ -16,10 +17,15 @@ const ProfileDashboardNav = () => {
     if (userData) {
       setUser(JSON.parse(userData));
     } else {
+<<<<<<< HEAD
       
       navigate('/login');
+=======
+      // Redirect to login if not logged in
+      window.location.hash="login";
+>>>>>>> 373da26b66cd98ee46671f164dea633e43a175f6
     }
-  }, [navigate]);
+  }, [location]);
   
   const [tab, setTab] = useState(0)
 

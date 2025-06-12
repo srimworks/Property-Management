@@ -7,11 +7,11 @@ const CheckEmi = ({close}) => {
   const [phone, setPhone] = useState("");
 
   const handleSubmit = () => {
-    if (phone.trim().length === 10) {
-      alert(`Thank you! We will contact you at ${phone}`);
-    } else {
-      alert("Please enter a valid 10-digit phone number.");
-    }
+    const {mobile,email} = JSON.parse(localStorage.getItem("user"))
+    console.log(mobile,email)
+    close(false)
+    //api call
+
   };
   const calculateEMI=(principal, annualInterestRate, tenureYears)=> {
   const monthlyRate = annualInterestRate / 12 / 100; 
@@ -46,20 +46,7 @@ const CheckEmi = ({close}) => {
       
         </div>
         <div className="phone-input-section">
-          <input
-            type="tel"
-            placeholder="Enter your phone number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            maxLength={10}
-          />
-          <input
-            type="email"
-            placeholder="Enter your email Address"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            maxLength={10}
-          />
+          
           <button onClick={handleSubmit} className="primary-btn">I'm Interested</button>
         </div>
       </div>

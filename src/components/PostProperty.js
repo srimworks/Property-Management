@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/PostProperty.css";
 import { IMAGES } from "../utils/images.js";
 import { PRODUCT_ADD_DATA } from "../utils/constant.js";
@@ -12,16 +12,16 @@ const PostProperty = () => {
   const [propertyImages, setPropertyImages] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const location = useLocation();
 
   // Check if user is logged in
   useEffect(() => {
     const userData = localStorage.getItem('user');
     if (!userData) {
       // Redirect to login if not logged in
-      navigate('/login');
+      window.location.hash="login"
     }
-  }, [navigate]);
+  }, []);
 
   const LoadedPercentage = Math.round((activeFields) / PRODUCT_ADD_DATA.length * 100, 0);
   

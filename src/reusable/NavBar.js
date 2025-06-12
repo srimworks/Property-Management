@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { IMAGES } from "../utils/images";
 import "../styles/NavBar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -17,6 +17,9 @@ const NavBar = () => {
   const [mobiledropdown, setMobileDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const userData = JSON.parse(localStorage.getItem("user"));
+  const url=useLocation();
+
+  
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -70,10 +73,22 @@ const NavBar = () => {
   };
 
   const handleSignin = () => {
-    setShowLogin(true);
+    window.location.hash="login"
     setMobileDropdown(false);
   };
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+    if (window.location.hash==="#login"){
+      setShowLogin(true)
+    }
+    else{
+      setShowLogin(false)
+    }
+    if (location=="/search-results" && url.state){
+      const {selectedCities,searchQuery}=url.state;
+      if (selectedCities)setSelectedCities(selectedCities)
+    }
+  },[url])
   return (
     <nav className={location === "/" ? "nav-home" : "nav"}>
       <div className="nav-left">
@@ -145,7 +160,7 @@ const NavBar = () => {
 
       <div className={mobiledropdown ? "nav-center-active" : "nav-center"}>
         <div className="nav-right">
-          {!location.includes("/profile") && (
+          {/* {!location.includes("/profile") && (
             <>
               <Link
                 to="/search-results"
@@ -157,7 +172,7 @@ const NavBar = () => {
               <h1 className="nav-right-text">Rent/Lease</h1>
               <h1 className="nav-right-text">Property Management</h1>
             </>
-          )}
+          )} */}
 
           <Link
             to="/post-property"
