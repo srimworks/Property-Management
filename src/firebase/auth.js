@@ -5,10 +5,10 @@ import {
   signInWithCustomToken
 } from 'firebase/auth';
 
-// Always use test mode since Firebase Phone Auth requires billing
+
 const TEST_MODE = true;
 
-// Store test verification data
+
 let testVerificationData = {
   confirmationResult: null,
   testOtp: null,
@@ -35,7 +35,7 @@ export const setupRecaptcha = (containerId) => {
   }
 };
 
-// Store the last sent OTP for each phone number
+
 const testOtps = new Map();
 
 export const sendOTP = async (phoneNumber, recaptchaVerifier) => {
@@ -44,15 +44,15 @@ export const sendOTP = async (phoneNumber, recaptchaVerifier) => {
       throw new Error('Phone number is required');
     }
 
-    // Ensure phone number is in E.164 format
+    
     if (!phoneNumber.startsWith('+')) {
-      phoneNumber = `+91${phoneNumber}`; // Default to India if no country code
+      phoneNumber = `+91${phoneNumber}`; 
     }
     
-    // Generate a test OTP (6 digits)
+    
     const testOtp = Math.floor(100000 + Math.random() * 900000).toString();
     
-    // Store the test OTP for verification
+    
     testOtps.set(phoneNumber, testOtp);
     
     console.log(`[Test Mode] OTP for ${phoneNumber}: ${testOtp}`);

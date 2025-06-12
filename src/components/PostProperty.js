@@ -4,7 +4,7 @@ import "../styles/PostProperty.css";
 import { IMAGES } from "../utils/images.js";
 import { PRODUCT_ADD_DATA } from "../utils/constant.js";
 import InputFeilds from "../reusable/InputFeilds.js";
-import { handlePropertySubmission } from "../api/propertyApi";
+import { apiService } from "../services/api";
 
 const PostProperty = () => {
   const [activeFields, setActiveFields] = useState(0);
@@ -86,39 +86,15 @@ const PostProperty = () => {
       };
       
       try {
-        const response = await handlePropertySubmission(propertySubmission);
+        const response = await apiService.createProperty(propertySubmission);
         
         if (response && response.id) {
-          const existingProperties = JSON.parse(localStorage.getItem('properties') || '[]');
-          existingProperties.push(response);
-          localStorage.setItem('properties', JSON.stringify(existingProperties));
-          
           alert("Property posted successfully!");
           navigate('/profile/properties');
         }
       } catch (apiError) {
         console.error("API Error:", apiError);
-        
-        const newPropertyId = Date.now().toString();
-        const newProperty = {
-          id: newPropertyId,
-          ...propertySubmission
-        };
-        
-        const existingProperties = JSON.parse(localStorage.getItem('properties') || '[]');
-        existingProperties.push(newProperty);
-        localStorage.setItem('properties', JSON.stringify(existingProperties));
-        
-        const userProperties = JSON.parse(localStorage.getItem('userProperties') || '{}');
-        if (!userProperties[userData.id || userData.firebaseUid]) {
-          userProperties[userData.id || userData.firebaseUid] = [];
-        }
-        
-        userProperties[userData.id || userData.firebaseUid].push(newPropertyId);
-        localStorage.setItem('userProperties', JSON.stringify(userProperties));
-        
-        alert("Property posted successfully! (Saved locally)");
-        navigate('/profile/properties');
+        setError(apiError.message || "Failed to submit property. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting property:", error);

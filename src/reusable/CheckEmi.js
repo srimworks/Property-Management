@@ -14,13 +14,13 @@ const CheckEmi = ({close}) => {
     }
   };
   const calculateEMI=(principal, annualInterestRate, tenureYears)=> {
-  const monthlyRate = annualInterestRate / 12 / 100; // R
-  const tenureMonths = tenureYears * 12; // N
+  const monthlyRate = annualInterestRate / 12 / 100; 
+  const tenureMonths = tenureYears * 12; 
 
   const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) /
               (Math.pow(1 + monthlyRate, tenureMonths) - 1);
 
-  return Math.round(emi); // Rounds to nearest rupee
+  return Math.round(emi); 
 }
   return (
     <div className="checkemi-outer-container">

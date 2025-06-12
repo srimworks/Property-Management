@@ -133,7 +133,7 @@ export const fetchUserProperties = async (userId) => {
       throw new Error('Authentication token not found');
     }
     
-    const response = await fetch(`${API_BASE_URL}/api/properties/user/${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/api/properties/user/my-properties`, { // Changed to use my-properties endpoint
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

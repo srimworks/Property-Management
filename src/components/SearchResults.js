@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IMAGES } from '../utils/images';
 import '../styles/SearchResults.css';
-import { searchProperties } from '../api/propertyApi';
+import { apiService } from '../services/api';
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -25,18 +25,10 @@ const SearchResults = () => {
         const storedParams = JSON.parse(localStorage.getItem('searchParams') || '{}');
         setSearchParams(storedParams);
         
-        const storedResults = JSON.parse(localStorage.getItem('searchResults') || '{}');
+        const results = await apiService.getProperties(storedParams);
         
-        if (storedResults && storedResults.properties && storedResults.properties.length > 0) {
-          setProperties(storedResults.properties);
-          setLoading(false);
-          return;
-        }
-        
-        const results = await searchProperties(storedParams);
-        
-        if (results && results.properties) {
-          setProperties(results.properties);
+        if (results) {
+          setProperties(results);
         }
       } catch (error) {
         console.error('Error loading search results:', error);
@@ -65,11 +57,10 @@ const SearchResults = () => {
         ...filters
       };
       
-      const results = await searchProperties(filterParams);
+      const results = await apiService.getProperties(filterParams);
       
-      if (results && results.properties) {
-        setProperties(results.properties);
-        localStorage.setItem('searchResults', JSON.stringify(results));
+      if (results) {
+        setProperties(results);
         localStorage.setItem('searchParams', JSON.stringify(filterParams));
         setSearchParams(filterParams);
       }
@@ -91,10 +82,10 @@ const SearchResults = () => {
     
     try {
       setLoading(true);
-      const results = await searchProperties(searchParams);
+      const results = await apiService.getProperties(searchParams);
       
-      if (results && results.properties) {
-        setProperties(results.properties);
+      if (results) {
+        setProperties(results);
       }
     } catch (error) {
       console.error('Error resetting filters:', error);

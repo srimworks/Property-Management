@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { IMAGES } from '../utils/images';
-import { fetchPropertyById } from '../api/propertyApi';
+import { apiService } from '../services/api';
 import '../styles/PropertyDetails.css';
 
 const PropertyDetails = () => {
@@ -22,10 +22,10 @@ const PropertyDetails = () => {
       try {
         setLoading(true);
         
-        const response = await fetchPropertyById(propertyId);
+        const response = await apiService.getPropertyById(propertyId);
         
-        if (response && response.property) {
-          setProperty(response.property);
+        if (response) {
+          setProperty(response);
         }
       } catch (error) {
         console.error('Error fetching property details:', error);

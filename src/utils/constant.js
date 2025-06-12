@@ -1,7 +1,7 @@
 import { data } from "react-router";
 import { IMAGES } from "./images";
 
-// why choose us cards
+
 export const MAIN_SEARCH_BAR_DATA = {
   items: [
     {
@@ -87,7 +87,7 @@ export const WHY_CHOOSE_US_CARDS = {
   ],
 };
 
-// our services
+
 
 export const OUR_SERVICES = {
   heading: "Our Services",
@@ -107,7 +107,7 @@ export const OUR_SERVICES = {
   ],
 };
 
-// how it works
+
 
 export const HOW_IT_WORKS_CARDS = {
   heading: "How it works",

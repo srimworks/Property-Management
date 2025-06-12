@@ -2,9 +2,9 @@
   "name": "property-management",
   "version": "1.0.0",
   "description": "Property Management Application",
-  "source": "/public/index.html",
+
   "scripts": {
-    "start": "parcel",
+    "start": "parcel public/index.html",
     "build": "parcel build",
     "clean": "rm -rf .parcel-cache dist"
   },

@@ -11,12 +11,12 @@ const ProfileDashboardNav = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    // Get user data from localStorage
+    
     const userData = localStorage.getItem('user');
     if (userData) {
       setUser(JSON.parse(userData));
     } else {
-      // Redirect to login if not logged in
+      
       navigate('/login');
     }
   }, [navigate]);
@@ -57,7 +57,7 @@ const ProfileDashboardNav = () => {
   ];
   const  pathname=window.location.pathname
 
-  // console.log(pathname)
+  
 
   return (
     <div className="dashboard-overall">
