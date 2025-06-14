@@ -74,6 +74,9 @@ body{
     background-color: rgba(217, 237, 250, 0.5);
   }
 }
+.secondary-btn._100{
+  width: 100%;
+}
 .outlet-render-home{
     display:flex ;
     align-items: center;

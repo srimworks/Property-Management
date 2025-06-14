@@ -17,13 +17,8 @@ const ProfileDashboardNav = () => {
     if (userData) {
       setUser(JSON.parse(userData));
     } else {
-<<<<<<< HEAD
-      
-      navigate('/login');
-=======
       // Redirect to login if not logged in
       window.location.hash="login";
->>>>>>> 373da26b66cd98ee46671f164dea633e43a175f6
     }
   }, [location]);
   

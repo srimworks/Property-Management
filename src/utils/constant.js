@@ -617,7 +617,7 @@ export const PRODUCT_ADD_DATA = [
         id: "propertyAvailableFor",
         label: "Property available for",
         required: true,
-        options: ["Sell","Rent", "Lease","Manage"],
+        options: ["Sell","Rent", "Lease"],
       },
       {
         type: "radio",
