@@ -5,7 +5,7 @@
 
   "scripts": {
     "start": "parcel public/index.html",
-    "build": "parcel build",
+    "build": "parcel build public/index.html",
     "clean": "rm -rf .parcel-cache dist"
   },
   "keywords": [
