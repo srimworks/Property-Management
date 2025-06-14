@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LOCATION_DATA } from "../utils/constant";
 import LoginPage from "../components/SignIn/LoginPage";
 import { searchProperties } from "../api/propertyApi";
+import PropertyManagement from "../components/PropertyManagement";
 
 const NavBar = () => {
   const location = useLocation().pathname;
@@ -14,12 +15,11 @@ const NavBar = () => {
   const [selectedCities, setSelectedCities] = useState([]);
   const [inputText, setInputText] = useState("");
   const [showLogin, setShowLogin] = useState(false);
+  const [propertyPopup,setPropertyPopup]=useState(false);
   const [mobiledropdown, setMobileDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const userData = JSON.parse(localStorage.getItem("user"));
-  const url=useLocation();
-
-  
+  const url = useLocation();
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -73,22 +73,21 @@ const NavBar = () => {
   };
 
   const handleSignin = () => {
-    window.location.hash="login"
+    window.location.hash = "login";
     setMobileDropdown(false);
   };
-  useEffect(()=>{
-    window.scrollTo(0,0)
-    if (window.location.hash==="#login"){
-      setShowLogin(true)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (window.location.hash === "#login") {
+      setShowLogin(true);
+    } else {
+      setShowLogin(false);
     }
-    else{
-      setShowLogin(false)
+    if (location == "/search-results" && url.state) {
+      const { selectedCities, searchQuery } = url.state;
+      if (selectedCities) setSelectedCities(selectedCities);
     }
-    if (location=="/search-results" && url.state){
-      const {selectedCities,searchQuery}=url.state;
-      if (selectedCities)setSelectedCities(selectedCities)
-    }
-  },[url])
+  }, [url]);
   return (
     <nav className={location === "/" ? "nav-home" : "nav"}>
       <div className="nav-left">
@@ -174,6 +173,7 @@ const NavBar = () => {
             </>
           )} */}
 
+          <h1 className="nav-right-text" onClick={()=>setPropertyPopup(true)}>Property Management</h1>
           <Link
             to="/post-property"
             className={mobiledropdown ? "link-100" : "link"}
@@ -199,6 +199,7 @@ const NavBar = () => {
           <LoginPage setShowLogin={setShowLogin} />
         </div>
       )}
+      {propertyPopup &&  <PropertyManagement setPopUp={setPropertyPopup}/>}
     </nav>
   );
 };

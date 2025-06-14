@@ -1,0 +1,206 @@
+.propertymanagement-popoup{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000090;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Popup Trigger */
+.pm-popup-trigger {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+}
+
+.pm-popup-trigger:hover {
+  color: #2563eb;
+}
+
+/* Popup Overlay */
+.pm-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+/* Popup Container */
+.pm-popup-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 32rem;
+  width: 100%;
+  padding: 1.5rem;
+  position: relative;
+}
+.pm-popup-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Close Button */
+.pm-popup-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #6b7280;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.pm-popup-close-btn:hover {
+  color: #374151;
+}
+
+/* Content Styles */
+.pm-popup-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: Poppins;
+  max-width: 300px;
+}
+
+.pm-popup-text {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: Open Sans;
+}
+
+/* Benefits List */
+.pm-benefit-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.pm-checkmark {
+  flex-shrink: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-benefit-text {
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+  color: #374151;
+  font-family: Open Sans;
+}
+
+/* Buttons */
+.pm-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.pm-primary-btn {
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+}
+
+.pm-primary-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.pm-secondary-btn {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: #374151;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+}
+
+.pm-secondary-btn:hover {
+  background-color: #f9fafb;
+}
+
+/* Success State */
+.pm-success-container {
+  text-align: center;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-success-icon {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 9999px;
+  background-color: #d1fae5;
+}
+
+.pm-success-icon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: #059669;
+}
+
+.pm-success-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.25rem;
+  font-family: Poppins;
+}
+
+.pm-success-text {
+  color: #6b7280;
+  font-family: Open Sans;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .pm-button-group {
+    flex-direction: row;
+  }
+}
