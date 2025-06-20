@@ -101,7 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f39c12;
+  background-color: #ffc567;
   gap: 8px;
   height: 100%;
   border: none;
@@ -115,6 +115,10 @@
   box-sizing: border-box;
   border-radius: 0px 8px 0px 0px;
 
+
+}
+.search-btn.active{
+    background-color: #f39c12;
   &:hover {
     background-color: rgb(182, 119, 17);
   }

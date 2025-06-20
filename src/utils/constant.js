@@ -965,3 +965,43 @@ export const formatToIndianNumber=(num)=> {
     return num.toString();
   }
 }
+
+
+export const DASHBOARD_TABS = [
+  {
+    id: "home",
+    name: "Home",
+    link: "/admin/dashboard/home",
+    Icon: IMAGES.HOME_ICON,
+  },
+  {
+    id: "mangement-requests",
+    name: "Manage Requests",
+    link: "/admin/dashboard/manage-requests",
+    Icon: IMAGES.REQUEST_ICON,
+  },
+  {
+    id: "property-requests",
+    name: "Property Requests",
+    link: "/admin/dashboard/property-requests",
+    Icon: IMAGES.REQUEST_ICON,
+  },
+  {
+    id: "properties-list",
+    name: "Property List",
+    link: "/admin/dashboard/property-list",
+    Icon: IMAGES.LIST_ICON,
+  },
+  {
+    id: "users-list",
+    name: "Users List",
+    link: "/admin/dashboard/user-list",
+    Icon: IMAGES.LIST_ICON,
+  },
+  {
+    id: "surveyors-list",
+    name: "Surveyors List",
+    link: "/admin/dashboard/surveyor-list",
+    Icon: IMAGES.LIST_ICON,
+  },
+];

@@ -132,7 +132,7 @@ const HomeHero = () => {
                 </div>
               )}
             </div>
-            <button className="search-btn" onClick={handleSearch}>
+            <button className={`search-btn ${selectedCities.length>0 ? "active":""}`} onClick={handleSearch}>
               <img src={IMAGES.SEARCH_ICON} alt="Search Icon" />
               Search
             </button>

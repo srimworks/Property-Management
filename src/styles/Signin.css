@@ -143,6 +143,10 @@
   }
 }
 
+.login-as-admin{
+  font-family: "Open Sans",sans-serif;
+  text-decoration: none;
+}
 .country-text {
   font-family: "Noto Color Emoji", sans-serif;
   font-weight: 400;
