@@ -475,17 +475,15 @@ const LoginPage = ({ setShowLogin }) => {
   const [userData, setUserData] = useState(null);
   const [testOtp, setTestOtp] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleCloseLogin = () => {
     setShowLogin(false);
-    console.log(location.pathname.includes("post-property"))
-    if(location.pathname.includes("post-property")){
+    console.log(location.pathname.includes("post-property"));
+    if (location.pathname.includes("post-property")) {
       navigate(-2);
+    } else {
+      navigate(-1);
     }
-    else{
-      navigate(-1)
-    }
-    
   };
 
   return (
@@ -505,6 +503,9 @@ const LoginPage = ({ setShowLogin }) => {
           <img src={IMAGES.CHECK_RIGHT_ICON} alt="Check Icon" />
           Seamless Buying & Renting
         </p>
+        <Link className="login-as-admin" to="/login/admin">
+          Login as Admin?
+        </Link>
       </div>
 
       <div className="signin-right-container">

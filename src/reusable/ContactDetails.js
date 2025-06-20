@@ -9,6 +9,7 @@ const ContactDetails = ({ name, contact, propertyCode, price ,close}) => {
         <div className="close-icon-container">
           <img src={IMAGES.CLOSE_ICON} alt="Close Icon" onClick={()=>close(false)} />
         </div>
+        <img src={IMAGES.CALL_ICON} alt="Call Icon" className="call-icon"/>
         <h3>Contact Details</h3>
         <div className="details-conatiner">
           <p>Name - Mahal Teja</p>

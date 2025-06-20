@@ -1,0 +1,162 @@
+
+.userlist-container {
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.userlist-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.adduser-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.adduser-btn:hover {
+  background-color: #0056b3;
+}
+
+.userlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.userlist-table th,
+.userlist-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Open Sans",sans-serif;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Modal styles */
+.userlist-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.userlist-modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  width: 300px;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.userlist-modal h3 {
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.userlist-modal input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.userlist-submit-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.userlist-submit-btn:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.confirm-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.confirm-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color: #c82333;
+}
+

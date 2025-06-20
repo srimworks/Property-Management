@@ -133,7 +133,7 @@ export const fetchUserProperties = async (userId) => {
       throw new Error('Authentication token not found');
     }
     
-    const response = await fetch(`${API_BASE_URL}/api/properties/user/my-properties`, { // Changed to use my-properties endpoint
+    const response = await fetch(`${API_BASE_URL}/properties/user/my-properties`, { // Changed to use my-properties endpoint
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -229,3 +229,47 @@ export const uploadPropertyImages = async (propertyId, images) => {
     throw error;
   }
 };
+
+
+export const createAccount= async (details,token)=>{
+  try{
+    const response = await fetch(`${API_BASE_URL}/api/create-account`,{
+      method:'POST',
+      body:details,
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      }
+    });
+
+    if (!response.ok){
+      throw new Error("Failed to Create Account")
+    }
+
+    return await response.json()
+
+  }
+  catch(err){
+    console("Create Account API Error",err)
+  }
+
+}
+
+export const getUserData=async(mobileNumber)=>{
+  try{
+    const response= await fetch (`${API_BASE_URL}/api/getuser`,{
+      method:"GET",
+      data:mobileNumber,
+      headers:{
+        "Authorization":`Bearer ${token}`,
+        "Content-Type":"text/plain"
+      }
+    })
+    if(!response.ok){
+      throw new Error("Failed to Get User Details")
+    }
+  }
+  catch(err){
+    console.log("Failed to Fetch Get User API")
+  }
+}

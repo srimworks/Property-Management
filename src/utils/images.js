@@ -75,5 +75,7 @@ export const IMAGES = {
   INSTAGRAM_ICON:new URL('../images/common/instagram.svg',import.meta.url).href,
   TWITTER_ICON:new URL('../images/common/twitter.svg',import.meta.url).href,
 
-
+  HOME_ICON:new URL('../images/Admin/Home.svg',import.meta.url).href,
+  REQUEST_ICON:new URL('../images/Admin/Edit.svg',import.meta.url).href,
+  LIST_ICON:new URL('../images/Admin/List.svg',import.meta.url).href,
 };
