@@ -1,4 +1,4 @@
-import API_BASE_URL from '../config/api';
+import API_BASE_URL, { API_ENDPOINTS, POST_API_HEADERS } from '../config/api';
 
 export const searchProperties = async (searchParams = {}) => {
   try {
@@ -231,14 +231,13 @@ export const uploadPropertyImages = async (propertyId, images) => {
 };
 
 
-export const createAccount= async (details,token)=>{
+export const createAccount= async (details)=>{
   try{
-    const response = await fetch(`${API_BASE_URL}/api/create-account`,{
+    const response = await fetch(API_ENDPOINTS.AUTH.REGISTER,{
       method:'POST',
       body:details,
       headers:{
         "Content-Type":"application/json",
-        "Authorization":`Bearer ${token}`
       }
     });
 
@@ -250,26 +249,51 @@ export const createAccount= async (details,token)=>{
 
   }
   catch(err){
-    console("Create Account API Error",err)
+    console.log("Create Account API Error",err)
   }
 
 }
 
 export const getUserData=async(mobileNumber)=>{
   try{
-    const response= await fetch (`${API_BASE_URL}/api/getuser`,{
-      method:"GET",
-      data:mobileNumber,
+    const response= await fetch (API_ENDPOINTS.AUTH.USER_DETAILS,{
+      method:"POST",
+      body:mobileNumber,
       headers:{
-        "Authorization":`Bearer ${token}`,
-        "Content-Type":"text/plain"
+        "Content-Type":"application/json",
       }
     })
     if(!response.ok){
       throw new Error("Failed to Get User Details")
     }
+    const data=await response.json()
+    return data
   }
   catch(err){
     console.log("Failed to Fetch Get User API")
+  }
+}
+
+
+export const postPropertyApi=async(data)=>{
+  try{
+    console.log(data)
+    const response= await fetch(API_ENDPOINTS.PROPERTY.CREATE,{
+      method:"POST",
+      body:data,
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+localStorage.getItem("token")
+      }
+    })
+        if (!response.ok){
+      throw new Error("Failed to Create Account")
+    }
+
+    return await response.json()
+
+  }
+  catch(error){
+    console.log(error)
   }
 }

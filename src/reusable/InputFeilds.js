@@ -19,11 +19,11 @@ const InputFeilds = ({ input, value, onChange }) => {
             name={input.id}
             required={input.required}
             onChange={(e) => onChange(input.id, e.target.value)}
-            defaultValue={value || "Select"}
+            defaultValue={value || "select"}
           >
             {input.options.map((item) => (
-              <option value={item} disabled={item === "Select"} key={item}>
-                {item}
+              <option value={item.id} disabled={item.id === "select"} key={item.id}>
+                {item.value}
               </option>
             ))}
           </select>
@@ -72,12 +72,12 @@ const InputFeilds = ({ input, value, onChange }) => {
                 const locationName = data.address?.suburb || data.address?.city || data.display_name;
                 onChange(input.id, locationName);
               } catch (error) {
-                console.error("Reverse geocoding failed", error);
+                // console.error("Reverse geocoding failed", error);
                 alert("Unable to fetch location name");
               }
             },
             (err) => {
-              console.error("Error getting location", err);
+              // console.error("Error getting location", err);
               alert("Unable to get current location");
             }
           );
@@ -113,18 +113,18 @@ const InputFeilds = ({ input, value, onChange }) => {
             </label>
             <div className="option-container">
                 {input.options.map((item) => {
-                const inputId = `${input.id}-${item}`;
+                const inputId = `${input.id}-${item.id}`;
                 return (
                     <div key={inputId} className="radio-container">
                     <input
                         id={inputId}
                         name={input.id}
-                        value={item}
+                        value={item.id}
                         type="radio"
-                        checked={value === item}
+                        checked={value === item.id}
                         onChange={(e) => onChange(input.id, e.target.value)}
                     />
-                    <label htmlFor={inputId}>{item}</label>
+                    <label htmlFor={inputId}>{item.value}</label>
                     </div>
                 );
                 })}
@@ -141,28 +141,27 @@ const InputFeilds = ({ input, value, onChange }) => {
           </label>
           <div className="check-option-container">
             {input.options.map((item) => (
-              <div key={item} className="radio-container">
+              <div key={item.id} className="radio-container">
                 <input
-                  value={item}
-                  disabled={item === "Select"}
-                  key={item}
+                  value={item.id}
+                  disabled={item.id === "select"}
                   type="checkbox"
-                  id={item}
+                  id={item.id}
                   name={input.label}
-                  checked={Array.isArray(value) && value.includes(item)}
+                  checked={Array.isArray(value) && value.includes(item.id)}
                   onChange={(e) => {
                     const updated = value || [];
                     if (e.target.checked) {
-                      onChange(input.id, [...updated, item]);
+                      onChange(input.id, [...updated, item.id]);
                     } else {
                       onChange(
                         input.id,
-                        updated.filter((v) => v !== item)
+                        updated.filter((v) => v !== item.id)
                       );
                     }
                   }}
                 />
-                <label htmlFor={item}>{item}</label>
+                <label htmlFor={item.id}>{item.value}</label>
               </div>
             ))}
           </div>
@@ -180,7 +179,7 @@ const InputFeilds = ({ input, value, onChange }) => {
               src={input.minusIcon}
               onClick={() => onChange(input.id, Math.max((value || 0) - 1, 0))}
             />
-            <span>{value}</span>
+            <span>{value? value : "0"}</span>
             <img
               src={input.plusIcon}
               onClick={() => onChange(input.id, (value || 0) + 1)}

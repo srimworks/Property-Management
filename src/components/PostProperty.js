@@ -5,6 +5,7 @@ import { IMAGES } from "../utils/images.js";
 import { PRODUCT_ADD_DATA } from "../utils/constant.js";
 import InputFeilds from "../reusable/InputFeilds.js";
 import { apiService } from "../services/api";
+import { postPropertyApi } from "../api/propertyApi.js";
 
 const PostProperty = () => {
   const [activeFields, setActiveFields] = useState(0);
@@ -70,7 +71,8 @@ const PostProperty = () => {
   };
   
   const handleSubmit = async () => {
-    try {
+    console.log(productData)
+    // try {
       setIsSubmitting(true);
       setError("");
       
@@ -85,23 +87,35 @@ const PostProperty = () => {
         status: 'active'
       };
       
-      try {
-        const response = await apiService.createProperty(propertySubmission);
-        
-        if (response && response.id) {
-          alert("Property posted successfully!");
-          navigate('/profile/properties');
-        }
-      } catch (apiError) {
-        console.error("API Error:", apiError);
-        setError(apiError.message || "Failed to submit property. Please try again.");
+      const response= await postPropertyApi(JSON.stringify(propertySubmission))
+      console.log(response)
+      if(!response.success){
+        alert("Failed to Post Property");
+        setIsSubmitting(false);
+
       }
-    } catch (error) {
-      console.error("Error submitting property:", error);
-      setError("Failed to submit property. Please try again.");
-    } finally {
+      else{
+        alert("Property posted successfully!");
+        navigate('/profile/properties');
+      }
       setIsSubmitting(false);
-    }
+    //   try {
+    //     const response = await apiService.createProperty(propertySubmission);
+        
+    //     if (response && response.id) {
+    //       alert("Property posted successfully!");
+    //       navigate('/profile/properties');
+    //     }
+    //   } catch (apiError) {
+    //     console.error("API Error:", apiError);
+    //     setError(apiError.message || "Failed to submit property. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error submitting property:", error);
+    //   setError("Failed to submit property. Please try again.");
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (
