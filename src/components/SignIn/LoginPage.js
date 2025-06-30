@@ -10,7 +10,7 @@ import {
   getTestOTP,
 } from "../../firebase/auth";
 import API_BASE_URL from "../../config/api";
-
+import { createAccount, getUserData } from "../../api/propertyApi";
 const Number = ({
   setFlowValue,
   formData,
@@ -144,6 +144,7 @@ const OTP = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const timerRef = useRef(null);
+  const navigate=useNavigate()
 
   useEffect(() => {
     if (timeLeft > 0 && !canResend) {
@@ -227,25 +228,26 @@ const OTP = ({
       }
 
       // Skip API call to backend for now and proceed directly to profile completion or login
-      console.log(
-        "Firebase verification successful, proceeding without backend API call"
-      );
+      // console.log(
+      //   "Firebase verification successful, proceeding without backend API call"
+      // );
 
       // Check if user already exists in localStorage
-      const existingUser = localStorage.getItem("user");
+      const existingUser = await getUserData(JSON.stringify({mobile:formData.country+formData.mobile}));
+      console.log(existingUser)
 
-      if (existingUser) {
+      if (existingUser.data.exists===true) {
         // User already exists in localStorage, update their data
-        const parsedUser = JSON.parse(existingUser);
+        // const parsedUser = JSON.parse(existingUser.data);
 
         // Update mobile number if it's different
-        if (parsedUser.mobile !== formData.mobile) {
-          parsedUser.mobile = formData.mobile;
-          localStorage.setItem("user", JSON.stringify(parsedUser));
-        }
+        // if (parsedUser.mobile !== formData.mobile) {
+        //   parsedUser.mobile = formData.mobile;
+        //   localStorage.setItem("user", JSON.stringify(parsedUser));
+        // }
 
         // Redirect to home page or dashboard
-        window.location.href = "/";
+        navigate("/");
       } else {
         // New user - proceed to profile completion
         setUserData({
@@ -363,7 +365,6 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   // Email validation function
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -393,28 +394,24 @@ const Details = ({ setFormData, setShowLogin, formData, userData }) => {
     setError("");
 
     try {
-      console.log("Creating user profile locally without API calls");
-
       // Create a user object with the provided information
+
       const user = {
-        id: Date.now().toString(), // Generate a temporary ID
         fullName: name,
         email: email || null,
-        mobile: formData.mobile,
+        mobile: formData.country + formData.mobile,
         firebaseUid: userData?.firebaseUid || "temp-firebase-uid",
         phoneNumber: userData?.phoneNumber || formData.mobile,
         createdAt: new Date().toISOString(),
       };
+      const response = await createAccount(JSON.stringify(user));
 
       // Store the user in localStorage
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(response?.data?.user));
 
       // Create a mock token
-      const mockToken =
-        "firebase-auth-token-" + Math.random().toString(36).substring(2);
+      const mockToken = response?.data?.token;
       localStorage.setItem("token", mockToken);
-
-      console.log("User profile created successfully:", user);
 
       // Close the login modal if it exists
       if (setShowLogin) {
@@ -478,7 +475,6 @@ const LoginPage = ({ setShowLogin }) => {
   const navigate = useNavigate();
   const handleCloseLogin = () => {
     setShowLogin(false);
-    console.log(location.pathname.includes("post-property"));
     if (location.pathname.includes("post-property")) {
       navigate(-2);
     } else {
