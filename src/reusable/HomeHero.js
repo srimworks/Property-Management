@@ -142,7 +142,7 @@ const HomeHero = () => {
               {MAIN_SEARCH_BAR_DATA.items[
                 activeTab
               ].filterOptions.checkOptions.map((item, index) => (
-                <div key={index}>
+                <div key={index} className="radio-container">
                   <input
                     type="radio"
                     id={`option${index}`}

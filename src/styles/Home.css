@@ -574,21 +574,26 @@
   }
   .search-container {
     height: auto;
+    padding: 0;
   }
   .search-bar {
     border-radius: 0px 0px 8px 8px;
   }
   .top-item-container {
     width: 100%;
-    overflow-x: scroll;
+    padding-right: 16px;
   }
   .top-item {
     width: 100%;
     font-size: 14px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .top-item-active {
     width: 100%;
     font-size: 14px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .dropdown-options{
     font-size: 14px;
@@ -618,5 +623,8 @@
   }
   .desc-body{
     font-size: 16px;
+  }
+  .bottom-item-container{
+    padding-right: 0 ;
   }
 }

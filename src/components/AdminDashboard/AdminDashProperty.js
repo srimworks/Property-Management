@@ -78,7 +78,10 @@ const AdminDashProperty = () => {
 
           <div className="pop-up-btns-container">
             <button onClick={()=>setShowDetails(false)} className="primary-btn">Accept</button>
-            <button onClick={()=>setShowDetails(false)} className="primary-btn red">Reject</button>
+            <form onSubmit={()=>setShowDetails(false)} className="reject-form">
+              <input placeholder="Enter Comment to Reject" required/>
+            <button className="primary-btn red">Reject</button>
+            </form>
           </div>
         </div>
       }

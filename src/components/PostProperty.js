@@ -14,6 +14,7 @@ const PostProperty = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const location = useLocation();
+  const navigate=useNavigate()
 
   // Check if user is logged in
   useEffect(() => {
@@ -72,7 +73,7 @@ const PostProperty = () => {
   
   const handleSubmit = async () => {
     console.log(productData)
-    // try {
+    try {
       setIsSubmitting(true);
       setError("");
       
@@ -92,13 +93,17 @@ const PostProperty = () => {
       if(!response.success){
         alert("Failed to Post Property");
         setIsSubmitting(false);
-
       }
       else{
         alert("Property posted successfully!");
         navigate('/profile/properties');
+        
       }
       setIsSubmitting(false);
+      return response.success}
+      catch(error){
+        console.log(error)
+      }
     //   try {
     //     const response = await apiService.createProperty(propertySubmission);
         

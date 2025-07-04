@@ -264,4 +264,10 @@
   .footer-bottom-container {
     flex-direction: column;
   }
+  .news-letter-container{
+    width: 100%;
+  }
+  .news-letterform{
+    flex-wrap: wrap;
+  }
 }
