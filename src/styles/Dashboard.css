@@ -172,18 +172,26 @@
   }
   .left-bottom-container-active {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     border-radius: 16px 16px 16px 0px;
     background: #fff;
     height: 100%;
-    position: absolute;
+    position: relative;
     width: 90%;
     height: 85%;
     margin-left: 16px;
     padding-inline: 16px;
     margin-right: 16px;
+  }
+  .logout-container{
+    width: auto;
+  }
+  .left-bottom-container-active ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
 }
 
@@ -200,5 +208,16 @@
   }
   .profile-details-container{
     align-items: flex-start;
+  }
+  .left-bottom-container-active{
+    flex-direction: column;
+    gap: 8px;
+  }
+  .left-bottom-container-active ul{
+    flex-direction: column;
+  }
+  .logout-container{
+    width: 100%;
+    margin: 0;
   }
 }

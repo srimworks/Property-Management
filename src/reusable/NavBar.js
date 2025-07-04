@@ -20,6 +20,7 @@ const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const userData = JSON.parse(localStorage.getItem("user"));
   const url = useLocation();
+  const [searchActive,setSearchActive]=useState(false)
 
   const handleSelectedCitites = (item) => {
     setSelectedCities([...selectedCities, item]);
@@ -60,15 +61,16 @@ const NavBar = () => {
     };
 
     try {
-      const results = await searchProperties(searchParams);
+      // const results = await searchProperties(searchParams);
 
-      localStorage.setItem("searchResults", JSON.stringify(results));
-      localStorage.setItem("searchParams", JSON.stringify(searchParams));
+      // localStorage.setItem("searchResults", JSON.stringify(results));
+      // localStorage.setItem("searchParams", JSON.stringify(searchParams));
 
       navigate("/search-results");
       setSearchResults(false);
+      setSearchActive(false)
     } catch (error) {
-      console.error("Error performing search:", error);
+      console.log("Error performing search:", error);
     }
   };
 
@@ -89,10 +91,10 @@ const NavBar = () => {
     }
   }, [url]);
   return (
-    <nav className={location === "/" ? "nav-home" : "nav"}>
+    <nav className={location === "/" ? `nav-home ${mobiledropdown && "active"}` : "nav"}  >
       <div className="nav-left">
         <Link to="/" className="link" onClick={() => setMobileDropdown(false)}>
-          <div className="nav-logo">
+          <div className={`nav-logo  ${searchActive ? "active":""}`}>
             <img src={IMAGES.MAIN_LOGO} alt="main-logo" />
             <h1 className="logo-text">RealEstatePro</h1>
           </div>
@@ -100,8 +102,8 @@ const NavBar = () => {
         {location !== "/" && !location.includes("/profile") && (
           <div className="nav-search-with-results">
             <form onSubmit={handleSearch} className="search-form">
-              <div className="nav-search-bar">
-                <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" />
+              <div className={`nav-search-bar ${searchActive ? "active":""}`}>
+                <img src={IMAGES.SEARCH_ICON_BLACK} alt="search Icon" className="nav-search-icon" onClick={()=>setSearchActive(true)}/>
                 {/* Selected Cities */}
                 <div className="selected-locations-nav">
                   {selectedCities.map((item, index) => (
@@ -150,7 +152,7 @@ const NavBar = () => {
           </div>
         )}
         <span
-          className="material-symbols-outline"
+          className={`material-symbols-outline  ${searchActive ? "active":""}`}
           onClick={() => setMobileDropdown(!mobiledropdown)}
         >
           dehaze

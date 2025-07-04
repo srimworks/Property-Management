@@ -71,7 +71,7 @@ const ProfileDashboardNav = () => {
             <h2 className="profile-name">{user?.fullName || 'User'}</h2>
             <h2 className="profile-email">{user?.email || user?.mobile || 'No contact info'}</h2>
           </div>
-          <img src={IMAGES.HAMBURGER_ICON} onClick={()=>setHambuger(true)} alt="Hamburger Icon " className="hamburger"/>
+          <img src={IMAGES.HAMBURGER_ICON} onClick={()=>setHambuger(!hamburgerActive)} alt="Hamburger Icon " className="hamburger"/>
         </div>
         <div className={hamburgerActive?"left-bottom-container-active":"left-bottom-container"}>
           <ul>
