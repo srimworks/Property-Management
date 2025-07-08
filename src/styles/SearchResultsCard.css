@@ -207,6 +207,20 @@
   gap: 11px;
 }
 
+.sr-top-image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 269px;
+  overflow: hidden;
+  border-radius: 16px;
+
+
+  & img{
+
+    height: 269px;
+  }
+}
 
 @media (max-width:774px) {
 

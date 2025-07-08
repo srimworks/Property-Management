@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { IMAGES } from '../utils/images';
 import '../styles/SearchResults.css';
 import { apiService } from '../services/api';
+import SearchResultsCard from "../reusable/SearchResultsCard.js"
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -174,7 +175,7 @@ const SearchResults = () => {
       </div>
       
       <div className="search-results-list">
-        <div className="search-header">
+        {/* <div className="search-header">
           <h1>Search Results</h1>
           {searchParams.query && (
             <p>Showing results for: <strong>{searchParams.query}</strong></p>
@@ -182,54 +183,9 @@ const SearchResults = () => {
           {searchParams.location && (
             <p>Location: <strong>{searchParams.location}</strong></p>
           )}
-        </div>
+        </div> */}
         
-        {loading ? (
-          <div className="loading">Loading properties...</div>
-        ) : properties.length === 0 ? (
-          <div className="no-results">
-            <p>No properties found matching your criteria.</p>
-            <p>Try adjusting your filters or search terms.</p>
-          </div>
-        ) : (
-          <div className="property-grid">
-            {properties.map((property, index) => (
-              <div 
-                className="property-card" 
-                key={property.id || index}
-                onClick={() => handlePropertyClick(property.id)}
-              >
-                <div className="property-image">
-                  <img 
-                    src={property.images && property.images.length > 0 
-                      ? property.images[0] 
-                      : IMAGES.PROPERTY_PLACEHOLDER} 
-                    alt={property.title || 'Property'} 
-                  />
-                </div>
-                <div className="property-details">
-                  <h3>{property.title || 'Untitled Property'}</h3>
-                  <p className="property-location">
-                    <img src={IMAGES.PROPERTY_LOCATION} alt="Location" />
-                    {property.locality || property.address || 'Location not specified'}
-                  </p>
-                  <p className="property-price">₹ {property.price || 'Price not specified'}</p>
-                  <div className="property-features">
-                    {property.bedrooms && (
-                      <span>{property.bedrooms} BHK</span>
-                    )}
-                    {property.furnishing && (
-                      <span>{property.furnishing}</span>
-                    )}
-                    {property.propertyType && (
-                      <span>{property.propertyType}</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        <SearchResultsCard/>
       </div>
     </div>
   );

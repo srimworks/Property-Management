@@ -125,15 +125,15 @@ export const handlePropertySubmission = async (propertyData) => {
   }
 };
 
-export const fetchUserProperties = async (userId) => {
+export const fetchUserProperties = async () => {
   try {
-    const token = localStorage.getItem('token');
+    const token = JSON.parse(localStorage.getItem('token'));
     
     if (!token) {
       throw new Error('Authentication token not found');
     }
     
-    const response = await fetch(`${API_BASE_URL}/properties/user/my-properties`, { // Changed to use my-properties endpoint
+    const response = await fetch(`${API_BASE_URL}/api/properties/user/my-properties`, { // Changed to use my-properties endpoint
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -145,10 +145,10 @@ export const fetchUserProperties = async (userId) => {
       const errorData = await response.json();
       throw new Error(errorData.message || 'Failed to fetch properties');
     }
-    
+    console.log(response)
     return await response.json();
   } catch (error) {
-    console.error('API Error:', error);
+    console.log('API Error:', error);
     throw error;
   }
 };
@@ -264,7 +264,7 @@ export const getUserData=async(mobileNumber)=>{
       }
     })
     if(!response.ok){
-      throw new Error("Failed to Get User Details")
+      alert("Failed to Get User Details")
     }
     const data=await response.json()
     return data

@@ -19,7 +19,7 @@ const SearchResultsCard = () => {
     <div className="search-results-card">
       <div className="sr-card-top">
         <div className="sr-top-image">
-          <img src={IMAGES.SEARCHRESULTS_IMAGE} alt="Image" />
+          <img src={IMAGES.PROPERTY_IMAGE_1} alt="Image" />
         </div>
         <div className="sr-top-content">
           <div className="sr-top-price">

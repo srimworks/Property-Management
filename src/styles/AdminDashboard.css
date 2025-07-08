@@ -12,6 +12,7 @@
   height: 100%;
   padding: 96px 64px 24px 24px;
   gap: 16px;
+  overflow-x: scroll;
 }
 
 .admin-flex-col-container {
