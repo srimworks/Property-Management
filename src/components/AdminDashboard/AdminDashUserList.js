@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/AdminUserList.css";
+import { getUsers } from "../../services/api";
 
 const initialUsers = [
   { name: "Alice", email: "alice@example.com", phone: "+91 98765 43210" },
   { name: "Bob", email: "bob@example.com", phone: "+91 87654 32109" },
 ];
 const AdminDashUserList = () => {
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
@@ -51,6 +52,16 @@ const AdminDashUserList = () => {
       setForm({ name: "", email: "", phone: "" });
     }
   };
+
+  const getUserList=async()=>{
+    const result = await getUsers()
+    setUsers(result.data)
+    console.log(result)
+  }
+
+  useEffect(()=>{
+    getUserList()
+  },[])
   return (
     <div className="outlet-admin">
       <h2 className="userlist-heading">Users List</h2>
@@ -70,9 +81,9 @@ const AdminDashUserList = () => {
         <tbody>
           {users.map((user, idx) => (
             <tr key={idx}>
-              <td>{user.name}</td>
+              <td>{user.fullName}</td>
               <td>{user.email}</td>
-              <td>{user.phone}</td>
+              <td>{user.mobile? user.mobile : "--"}</td>
               <td className="action-buttons">
                 <button
                   className="edit-btn"

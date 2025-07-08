@@ -29,12 +29,11 @@ const MyTransactions = () => {
   const loadUserProperties = async (userData) => {
     try {
       setLoading(true);
-      const userId = userData.id || userData.firebaseUid;
       
       try {
-        const response = await fetchUserProperties(userId);
-        if (response && Array.isArray(response.properties)) {
-          setProperties(response.properties);
+        const response = await fetchUserProperties();
+        if (response && Array.isArray(response.data.properties)) {
+          setProperties(response.data.properties);
         }
       } catch (apiError) {
         console.error('API Error:', apiError);
@@ -97,11 +96,11 @@ const MyTransactions = () => {
                   )}
                 </div>
                 <div className='property-details'>
-                  <h4>{property.apartmentType} {property.bhkType}</h4>
+                  <h4>{property.title} </h4>
                   <p>Floor: {property.floor}</p>
                   <p>Built Up Area: {property.builtUpArea} sq.ft</p>
                   {property.facing && <p>Facing: {property.facing}</p>}
-                  <p>Posted on: {new Date(property.createdAt).toLocaleDateString()}</p>
+                  <p>Posted on: {new Date(property.owner.createdAt).toLocaleDateString()}</p>
                 </div>
               </div>
             ))}

@@ -3,7 +3,8 @@
     max-width: 1200px;
     margin: 0 auto;
     background-color: #fff;
-    min-height: 100vh;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .user-profile-section {

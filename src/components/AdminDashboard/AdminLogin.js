@@ -1,21 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/AdminLogin.css';
 import { useNavigate } from 'react-router';
+import { adminLogin } from '../../services/api.js';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const[errMessage,setErrorMessage]=useState("")
   const navigate=useNavigate()
 
   const handleChange = (e) => {
+    setErrorMessage("")
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit =  async(e) => {
     e.preventDefault();
-    console.log('Logging in with:', credentials);
     // Add authentication logic here
-    navigate("/admin/dashboard/home")
+    const result= await adminLogin(credentials)
+    if (result.success){
+      localStorage.setItem("adminToken",result.data.token)
+      localStorage.setItem("admin",JSON.stringify(result.data.user))
+      navigate("/admin/dashboard/home")
+    }
+    else{
+      if(result===false){
+        setErrorMessage("Invalid Credentials")
+      }
+      else{
+        setErrorMessage("Server Error")
+      }
+    }
   };
+
+  useEffect(()=>{
+      if(localStorage.getItem("admin")!==null){
+    navigate("/admin/dashboard/home")
+  }
+
+  },[])
 
   return (
     <div className="admin-login-wrapper">
@@ -57,7 +80,7 @@ const AdminLogin = () => {
               required
             />
           </div>
-
+          <p className='err-msg'>{errMessage}</p>
           <button type="submit" className="admin-login-button">Login</button>
         </form>
 

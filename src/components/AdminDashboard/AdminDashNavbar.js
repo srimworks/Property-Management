@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { DASHBOARD_TABS } from "../../utils/constant";
 import "../../styles/AdminDashNavbar.css";
@@ -6,15 +6,35 @@ import { IMAGES } from "../../utils/images";
 
 const AdminDashNavbar = () => {
   const navigate = useNavigate();
+  const [fullName, setFullName] = useState("");
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin");
+    localStorage.removeItem("adminToken");
+    navigate("/login/admin");
+  };
+
+  useEffect(() => {
+    const adminData = localStorage.getItem("admin");
+    if (!adminData) {
+      navigate("/login/admin");
+      return;
+    } else {
+      const { fullName } = JSON.parse(localStorage.getItem("admin"));
+      setFullName(fullName);
+    }
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar-top">
         <div className="nav-logo">
           <h1 className="logo-text-admin">RealEstatePro</h1>
-          <div className="account-name-container">
-            <span className="profile-icon">MA</span>
-            <p>Mahal</p>
-          </div>
+          {fullName && (
+            <div className="account-name-container">
+              <span className="profile-icon">{fullName[0]}</span>
+              <p>{fullName}</p>
+            </div>
+          )}
         </div>
         <div className="sidebar-items-container">
           {DASHBOARD_TABS.map((item, index) => (
@@ -31,7 +51,7 @@ const AdminDashNavbar = () => {
           ))}
         </div>
       </div>
-      <div className="logout-container" onClick={()=>navigate("/")}>
+      <div className="logout-container" onClick={handleLogout}>
         <img src={IMAGES.LOGOUT_ICON} alt="Icon" /> Logout
       </div>
     </div>

@@ -144,8 +144,8 @@ const OTP = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const timerRef = useRef(null);
-  const navigate=useNavigate()
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     if (timeLeft > 0 && !canResend) {
       timerRef.current = setTimeout(() => {
@@ -233,18 +233,15 @@ const OTP = ({
       // );
 
       // Check if user already exists in localStorage
-      const existingUser = await getUserData(JSON.stringify({mobile:formData.country+formData.mobile}));
-      console.log(existingUser)
+      // console.log(localStorage)
+      const existingUser = await getUserData(
+        JSON.stringify({ phone: formData.country + formData.mobile })
+      );
+      console.log(existingUser);
 
-      if (existingUser.data.exists===true) {
-        // User already exists in localStorage, update their data
-        // const parsedUser = JSON.parse(existingUser.data);
-
-        // Update mobile number if it's different
-        // if (parsedUser.mobile !== formData.mobile) {
-        //   parsedUser.mobile = formData.mobile;
-        //   localStorage.setItem("user", JSON.stringify(parsedUser));
-        // }
+      if (existingUser.success === true) {
+        localStorage.setItem("user", JSON.stringify(existingUser.data));
+        localStorage.setItem("token", JSON.stringify(existingUser.token));
 
         // Redirect to home page or dashboard
         navigate("/");
